@@ -1,0 +1,358 @@
+[
+  {
+    "id": "5013",
+    "name": "5013",
+    "cat": "經典系列",
+    "suitableFaceShapes": [
+      "圓臉",
+      "鵝蛋臉"
+    ],
+    "colors": [
+      {
+        "id": "5013-1",
+        "name": "玳瑁",
+        "hex": "#4B3621",
+        "img": "/all_glasses/經典系列/5013/5013-玳瑁.png",
+        "suitableSkinTones": [
+          "暖白皮",
+          "小麥色"
+        ],
+        "pitch": "經典方框結合溫潤玳瑁色，能修飾圓潤線條並為暖色調肌膚帶來好氣色。"
+      },
+      {
+        "id": "5013-2",
+        "name": "透灰",
+        "hex": "#808080",
+        "img": "/all_glasses/經典系列/5013/5013-透灰.png",
+        "suitableSkinTones": [
+          "冷白皮"
+        ],
+        "pitch": "透明感灰框減輕視覺重量，俐落修飾臉型，完美襯托冷色調肌膚。"
+      },
+      {
+        "id": "5013-3",
+        "name": "黑",
+        "hex": "#222222",
+        "img": "/all_glasses/經典系列/5013/5013-黑.png",
+        "suitableSkinTones": [
+          "暖白皮",
+          "冷白皮",
+          "小麥色"
+        ],
+        "pitch": "極具存在感的經典黑粗框，百搭不挑膚色，瞬間提升個性立體感。"
+      }
+    ],
+    "frameWidthMM": 140
+  },
+  {
+    "id": "N401",
+    "name": "N401",
+    "cat": "經典系列",
+    "suitableFaceShapes": [
+      "方臉",
+      "心型臉"
+    ],
+    "colors": [
+      {
+        "id": "N401-1",
+        "name": "玳瑁",
+        "hex": "#4B3621",
+        "img": "/all_glasses/經典系列/N401/N401-玳瑁.png",
+        "suitableSkinTones": [
+          "暖白皮",
+          "小麥色"
+        ],
+        "pitch": "復古圓框搭配精緻雕花，柔化臉部稜角，玳瑁色增添暖皮的優雅氣質。"
+      },
+      {
+        "id": "N401-2",
+        "name": "藍琥珀",
+        "hex": "#003366",
+        "img": "/all_glasses/經典系列/N401/N401-藍琥珀.png",
+        "suitableSkinTones": [
+          "冷白皮"
+        ],
+        "pitch": "獨特的藍琥珀色澤在光線下閃耀，圓框設計柔化方臉，極適合冷白皮。"
+      },
+      {
+        "id": "N401-3",
+        "name": "黑",
+        "hex": "#222222",
+        "img": "/all_glasses/經典系列/N401/N401-黑.png",
+        "suitableSkinTones": [
+          "暖白皮",
+          "冷白皮",
+          "小麥色"
+        ],
+        "pitch": "黑色圓框結合金屬細節，對比鮮明且修飾稜角，不挑膚色的百搭單品。"
+      }
+    ],
+    "frameWidthMM": 140
+  },
+  {
+    "id": "5014",
+    "name": "5014",
+    "cat": "經典系列",
+    "suitableFaceShapes": [
+      "圓臉",
+      "心型臉"
+    ],
+    "colors": [
+      {
+        "id": "5014-1",
+        "name": "黑",
+        "hex": "#222222",
+        "img": "/all_glasses/經典系列/5013/5013-黑.png",
+        "suitableSkinTones": [
+          "暖白皮",
+          "冷白皮",
+          "小麥色"
+        ],
+        "pitch": "百搭的經典粗框，以簡約線條勾勒出臉部立體感，不挑膚色的完美選擇。"
+      }
+    ],
+    "frameWidthMM": 140
+  },
+  {
+    "id": "5015",
+    "name": "5015",
+    "cat": "經典系列",
+    "suitableFaceShapes": [
+      "方臉",
+      "鵝蛋臉"
+    ],
+    "colors": [
+      {
+        "id": "5015-1",
+        "name": "透灰",
+        "hex": "#808080",
+        "img": "/all_glasses/經典系列/5013/5013-透灰.png",
+        "suitableSkinTones": [
+          "冷白皮"
+        ],
+        "pitch": "輕盈透明感灰框設計，大幅減輕面部重量，打造清新知性的都會風格。"
+      }
+    ],
+    "frameWidthMM": 140
+  },
+  {
+    "id": "N402",
+    "name": "N402",
+    "cat": "經典系列",
+    "suitableFaceShapes": [
+      "方臉",
+      "心型臉"
+    ],
+    "colors": [
+      {
+        "id": "N402-1",
+        "name": "玳瑁",
+        "hex": "#4B3621",
+        "img": "/all_glasses/經典系列/N401/N401-玳瑁.png",
+        "suitableSkinTones": [
+          "暖白皮",
+          "小麥色"
+        ],
+        "pitch": "充滿細節的復古圓框，溫暖的玳瑁色澤，為肌膚注入自然好氣色。"
+      }
+    ],
+    "frameWidthMM": 140
+  },
+  {
+    "id": "N403",
+    "name": "N403",
+    "cat": "經典系列",
+    "suitableFaceShapes": [
+      "圓臉",
+      "鵝蛋臉"
+    ],
+    "colors": [
+      {
+        "id": "N403-1",
+        "name": "藍琥珀",
+        "hex": "#003366",
+        "img": "/all_glasses/經典系列/N401/N401-藍琥珀.png",
+        "suitableSkinTones": [
+          "冷白皮"
+        ],
+        "pitch": "深邃的藍琥珀色調在光線下若隱若現，圓潤邊框設計展現獨特藝術氣息。"
+      }
+    ],
+    "frameWidthMM": 140
+  },
+  {
+    "id": "23883",
+    "name": "23883",
+    "cat": "羽毛鈦系列",
+    "suitableFaceShapes": [
+      "方臉",
+      "心型臉"
+    ],
+    "colors": [
+      {
+        "id": "23883-1",
+        "name": "玳瑁",
+        "hex": "#4B3621",
+        "img": "/all_glasses/羽毛鈦系列/23883/23883-玳瑁.png",
+        "suitableSkinTones": [
+          "暖白皮",
+          "小麥色"
+        ],
+        "pitch": "極輕羽毛鈦金屬結合細緻玳瑁圓框，溫柔修飾方臉，為暖皮帶來好氣色。"
+      },
+      {
+        "id": "23883-2",
+        "name": "黑",
+        "hex": "#222222",
+        "img": "/all_glasses/羽毛鈦系列/23883/23883-黑.png",
+        "suitableSkinTones": [
+          "暖白皮",
+          "冷白皮",
+          "小麥色"
+        ],
+        "pitch": "經典黑色鈦金屬圓框，輕盈無負擔地柔化臉部線條，適合所有膚色。"
+      }
+    ],
+    "frameWidthMM": 140
+  },
+  {
+    "id": "5006",
+    "name": "5006",
+    "cat": "羽毛鈦系列",
+    "suitableFaceShapes": [
+      "方臉",
+      "心型臉",
+      "鵝蛋臉"
+    ],
+    "colors": [
+      {
+        "id": "5006-1",
+        "name": "抹茶",
+        "hex": "#556B2F",
+        "img": "/all_glasses/羽毛鈦系列/5006/5006-抹茶.png",
+        "suitableSkinTones": [
+          "暖白皮",
+          "小麥色"
+        ],
+        "pitch": "獨特抹茶綠調的輕盈圓框，修飾有稜角的臉型，提亮暖色與橄欖色肌膚。"
+      },
+      {
+        "id": "5006-2",
+        "name": "玳瑁",
+        "hex": "#4B3621",
+        "img": "/all_glasses/羽毛鈦系列/5006/5006-玳瑁.png",
+        "suitableSkinTones": [
+          "暖白皮",
+          "小麥色"
+        ],
+        "pitch": "經典玳瑁色羽毛鈦圓框，復古百搭且修飾臉型，適合暖色調肌膚配戴。"
+      },
+      {
+        "id": "5006-3",
+        "name": "黑",
+        "hex": "#222222",
+        "img": "/all_glasses/羽毛鈦系列/5006/5006-黑.png",
+        "suitableSkinTones": [
+          "暖白皮",
+          "冷白皮",
+          "小麥色"
+        ],
+        "pitch": "極簡的黑色羽毛鈦圓框，輕盈修飾下巴線條，任何膚色皆能輕鬆駕馭。"
+      }
+    ],
+    "frameWidthMM": 140
+  },
+  {
+    "id": "23884",
+    "name": "23884",
+    "cat": "羽毛鈦系列",
+    "suitableFaceShapes": [
+      "方臉",
+      "鵝蛋臉"
+    ],
+    "colors": [
+      {
+        "id": "23884-1",
+        "name": "玳瑁",
+        "hex": "#4B3621",
+        "img": "/all_glasses/羽毛鈦系列/23883/23883-玳瑁.png",
+        "suitableSkinTones": [
+          "暖白皮",
+          "小麥色"
+        ],
+        "pitch": "超輕量鈦金屬結構，點綴玳瑁紋理，打造無與倫比的舒適配戴體驗。"
+      }
+    ],
+    "frameWidthMM": 140
+  },
+  {
+    "id": "23885",
+    "name": "23885",
+    "cat": "羽毛鈦系列",
+    "suitableFaceShapes": [
+      "圓臉",
+      "心型臉"
+    ],
+    "colors": [
+      {
+        "id": "23885-1",
+        "name": "黑",
+        "hex": "#222222",
+        "img": "/all_glasses/羽毛鈦系列/23883/23883-黑.png",
+        "suitableSkinTones": [
+          "暖白皮",
+          "冷白皮",
+          "小麥色"
+        ],
+        "pitch": "幾近無形的純黑鈦金屬細框，完美隱形於面部輪廓中，展現極簡魅力。"
+      }
+    ],
+    "frameWidthMM": 140
+  },
+  {
+    "id": "5007",
+    "name": "5007",
+    "cat": "羽毛鈦系列",
+    "suitableFaceShapes": [
+      "方臉",
+      "鵝蛋臉"
+    ],
+    "colors": [
+      {
+        "id": "5007-1",
+        "name": "抹茶",
+        "hex": "#556B2F",
+        "img": "/all_glasses/羽毛鈦系列/5006/5006-抹茶.png",
+        "suitableSkinTones": [
+          "暖白皮",
+          "小麥色"
+        ],
+        "pitch": "以罕見的抹茶綠鈦金屬打造，不僅輕盈更充滿知性質感，修飾效果極佳。"
+      }
+    ],
+    "frameWidthMM": 140
+  },
+  {
+    "id": "5008",
+    "name": "5008",
+    "cat": "羽毛鈦系列",
+    "suitableFaceShapes": [
+      "圓臉",
+      "方臉"
+    ],
+    "colors": [
+      {
+        "id": "5008-1",
+        "name": "玳瑁",
+        "hex": "#4B3621",
+        "img": "/all_glasses/羽毛鈦系列/5006/5006-玳瑁.png",
+        "suitableSkinTones": [
+          "暖白皮",
+          "小麥色"
+        ],
+        "pitch": "優雅的玳瑁色在極細鈦金屬邊框上延伸，讓復古氣息輕巧不厚重。"
+      }
+    ],
+    "frameWidthMM": 140
+  }
+]

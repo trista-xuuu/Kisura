@@ -1,0 +1,122 @@
+[
+  {
+    "id": "s01",
+    "name": "寶島眼鏡 台北南西店",
+    "region": "台北市",
+    "address": "台北市中山區南京西路12號",
+    "phone": "02-2521-1234",
+    "hours": "11:00 - 22:00",
+    "models": ["5013", "N401", "23883", "5006"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台北市中山區南京西路12號"
+  },
+  {
+    "id": "s02",
+    "name": "寶島眼鏡 台北忠孝店",
+    "region": "台北市",
+    "address": "台北市大安區忠孝東路四段100號",
+    "phone": "02-2771-5678",
+    "hours": "11:00 - 22:00",
+    "models": ["5013", "23883"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台北市大安區忠孝東路四段100號"
+  },
+  {
+    "id": "s03",
+    "name": "寶島眼鏡 台北信義威秀店",
+    "region": "台北市",
+    "address": "台北市信義區松壽路20號",
+    "phone": "02-2723-9012",
+    "hours": "11:00 - 23:00",
+    "models": ["N401", "5006"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台北市信義區松壽路20號"
+  },
+  {
+    "id": "s04",
+    "name": "寶島眼鏡 新北板橋大遠百店",
+    "region": "新北市",
+    "address": "新北市板橋區新站路28號",
+    "phone": "02-2959-3456",
+    "hours": "11:00 - 22:00",
+    "models": ["5013", "N401", "23883", "5006"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=新北市板橋區新站路28號"
+  },
+  {
+    "id": "s05",
+    "name": "寶島眼鏡 新北中和環球店",
+    "region": "新北市",
+    "address": "新北市中和區中山路三段122號",
+    "phone": "02-2222-7890",
+    "hours": "11:00 - 22:00",
+    "models": ["5013", "5006"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=新北市中和區中山路三段122號"
+  },
+  {
+    "id": "s06",
+    "name": "寶島眼鏡 桃園統領店",
+    "region": "桃園市",
+    "address": "桃園市桃園區中正路61號",
+    "phone": "03-333-1111",
+    "hours": "11:00 - 21:30",
+    "models": ["N401", "23883"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=桃園市桃園區中正路61號"
+  },
+  {
+    "id": "s07",
+    "name": "寶島眼鏡 新竹巨城店",
+    "region": "新竹市",
+    "address": "新竹市東區中央路229號",
+    "phone": "03-532-2222",
+    "hours": "11:00 - 21:30",
+    "models": ["5013", "N401", "23883", "5006"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=新竹市東區中央路229號"
+  },
+  {
+    "id": "s08",
+    "name": "寶島眼鏡 台中勤美誠品店",
+    "region": "台中市",
+    "address": "台中市西區公益路68號",
+    "phone": "04-2326-3333",
+    "hours": "11:00 - 22:00",
+    "models": ["5013", "23883", "5006"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台中市西區公益路68號"
+  },
+  {
+    "id": "s09",
+    "name": "寶島眼鏡 台中新光三越店",
+    "region": "台中市",
+    "address": "台中市西屯區台灣大道三段301號",
+    "phone": "04-2255-4444",
+    "hours": "11:00 - 22:00",
+    "models": ["N401", "5006"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台中市西屯區台灣大道三段301號"
+  },
+  {
+    "id": "s10",
+    "name": "寶島眼鏡 台南西門新光店",
+    "region": "台南市",
+    "address": "台南市中西區西門路一段658號",
+    "phone": "06-303-5555",
+    "hours": "11:00 - 22:00",
+    "models": ["5013", "N401", "23883"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台南市中西區西門路一段658號"
+  },
+  {
+    "id": "s11",
+    "name": "寶島眼鏡 高雄漢神巨蛋店",
+    "region": "高雄市",
+    "address": "高雄市左營區博愛二路777號",
+    "phone": "07-555-6666",
+    "hours": "11:00 - 22:30",
+    "models": ["5013", "N401", "23883", "5006"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=高雄市左營區博愛二路777號"
+  },
+  {
+    "id": "s12",
+    "name": "寶島眼鏡 高雄夢時代店",
+    "region": "高雄市",
+    "address": "高雄市前鎮區中華五路789號",
+    "phone": "07-823-7777",
+    "hours": "11:00 - 22:00",
+    "models": ["5013", "23883"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=高雄市前鎮區中華五路789號"
+  }
+]
