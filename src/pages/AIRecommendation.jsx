@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import * as faceapi from '@vladmandic/face-api';
 import allProducts from '../data/products.json';
+import { Lightbulb, Camera, X, MagnifyingGlass, Sparkle, Palette, Ruler } from '@phosphor-icons/react';
 
 const AIRecommendation = () => {
   const [photo, setPhoto] = useState(null);
@@ -192,7 +193,8 @@ const AIRecommendation = () => {
   return (
     <div style={{ backgroundColor: 'var(--color-primary-white)', minHeight: '100vh', paddingBottom: '120px' }}>
       
-      <div style={{ padding: '80px var(--padding-x)', textAlign: 'center', backgroundColor: 'var(--color-secondary-cream)' }}>
+      <div style={{ padding: '80px var(--padding-x)', textAlign: 'center', backgroundColor: 'var(--color-g10)' }}>
+        <p className="en-caption" style={{ color: 'var(--color-g80)', marginBottom: '16px', letterSpacing: '0.2em' }}>AI RECOMMENDATION</p>
         <h1 className="tc-h1" style={{ color: 'var(--color-g100)', marginBottom: '16px' }}>AI 專屬推薦</h1>
         <p className="tc-body" style={{ color: 'var(--color-g80)', maxWidth: '600px', margin: '0 auto' }}>
           上傳您的正面相片，我們的 AI 將為您分析臉部輪廓與膚色，找出最能完美修飾您臉型與提亮氣色的專屬眼鏡。
@@ -209,11 +211,13 @@ const AIRecommendation = () => {
             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' 
           }}>
             <h3 className="tc-h2" style={{ color: '#FFF', marginBottom: '16px' }}>即時相片擷取</h3>
-            <p className="tc-body" style={{ color: 'var(--color-accent-earth)', marginBottom: '32px', textAlign: 'center' }}>
-              💡 提醒您：請拍攝包含<strong style={{ color: '#FFF' }}>「胸上」</strong>的<strong style={{ color: '#FFF' }}>「清晰正面照」</strong>，<br/>並確保光線充足，以獲得最精準的推薦結果。
+            <button onClick={closeCamera} style={{ position: 'absolute', top: '16px', right: '16px', background: 'none', border: 'none', color: '#FFF', cursor: 'pointer', zIndex: 20, display: 'flex' }}><X size={32} /></button>
+            <p className="tc-body" style={{ color: '#FFF', marginBottom: '32px', display: 'flex', gap: '8px', alignItems: 'flex-start', textAlign: 'left' }}>
+              <Lightbulb size={24} style={{ flexShrink: 0, marginTop: '4px' }} weight="fill" color="var(--color-accent-earth)" /> 
+              <span>提醒您：請拍攝包含<strong style={{ color: '#FFF' }}>「胸上」</strong>的<strong style={{ color: '#FFF' }}>「清晰正面照」</strong>，<br/>並確保光線充足，以獲得最精準的推薦結果。</span>
             </p>
             
-            <div style={{ position: 'relative', width: '90%', maxWidth: '600px', backgroundColor: '#000', borderRadius: '12px', overflow: 'hidden' }}>
+            <div style={{ position: 'relative', width: '90%', maxWidth: '600px', backgroundColor: '#000', overflow: 'hidden' }}>
               <video 
                 ref={videoRef} 
                 autoPlay 
@@ -240,7 +244,7 @@ const AIRecommendation = () => {
                 <div style={{ position: 'absolute', top: '58%', left: 0, right: 0, textAlign: 'center' }}>
                   <span style={{ 
                     backgroundColor: alignStatus === 'perfect' ? 'rgba(76, 175, 80, 0.9)' : 'rgba(0,0,0,0.5)', 
-                    color: '#FFF', padding: '8px 20px', borderRadius: '20px', fontSize: '15px', letterSpacing: '0.05em', fontWeight: 'bold',
+                    color: '#FFF', padding: '8px 20px', fontSize: '15px', letterSpacing: '0.05em', fontWeight: 'bold',
                     animation: alignStatus !== 'perfect' && alignStatus !== 'detecting' ? 'flashWarning 1s infinite' : 'none',
                   }}>
                     {alignStatus === 'detecting' && '臉部定位中...'}
@@ -254,8 +258,8 @@ const AIRecommendation = () => {
             </div>
 
             <div style={{ display: 'flex', gap: '24px', marginTop: '40px' }}>
-              <button className="btn-outline" style={{ color: '#FFF', borderColor: '#FFF' }} onClick={closeCamera}>取消</button>
-              <button className="btn-primary" style={{ backgroundColor: 'var(--color-accent-earth)' }} onClick={capturePhoto}>📸 拍攝</button>
+              <button className="btn-primary" onClick={capturePhoto} style={{ padding: '12px 32px', fontSize: '18px', display: 'flex', alignItems: 'center', gap: '8px' }}><Camera size={24} /> 拍攝</button>
+              <button className="btn-outline" onClick={closeCamera} style={{ padding: '12px 32px', backgroundColor: 'var(--color-primary-white)', fontSize: '18px', display: 'flex', alignItems: 'center', gap: '8px' }}><X size={20} /> 取消</button>
             </div>
           </div>
         )}
@@ -263,11 +267,11 @@ const AIRecommendation = () => {
         {/* Upload Area */}
         {!photo && !isCameraOpen && (
           <div style={{ 
-            border: '2px dashed var(--color-g40)', borderRadius: '12px', padding: '80px 20px', 
+            border: '2px dashed var(--color-g40)', padding: '80px 20px', 
             textAlign: 'center', backgroundColor: 'var(--color-g10)' 
           }}>
-            <p className="tc-h3" style={{ marginBottom: '16px', color: 'var(--color-g100)' }}>請提供一張清晰的正面照片</p>
-            <p className="tc-body" style={{ marginBottom: '32px', color: 'var(--color-accent-earth)', backgroundColor: '#FCF7ED', display: 'inline-block', padding: '8px 24px', borderRadius: '24px' }}>
+            <p className="tc-h5" style={{ marginBottom: '16px', color: 'var(--color-g80)' }}>請提供一張清晰的正面照片</p>
+            <p className="tc-body" style={{ marginBottom: '32px', color: 'var(--color-g80)', backgroundColor: '#FCF7ED', display: 'inline-block', padding: '8px 24px' }}>
               💡 為了獲得最佳分析效果，請確保照片為<strong>「胸上正面照」</strong>且臉部清晰明亮
             </p>
             
@@ -277,12 +281,12 @@ const AIRecommendation = () => {
                 <input type="file" accept="image/*" onChange={handlePhotoUpload} style={{ display: 'none' }} />
               </label>
               
-              <button className="btn-outline" onClick={openCamera}>
-                📷 即時拍照
+              <button className="btn-primary" onClick={openCamera} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Camera size={20} /> 即時拍照
               </button>
             </div>
             
-            <p className="tc-caption" style={{ marginTop: '24px', color: 'var(--color-g60)' }}>
+            <p className="tc-caption" style={{ marginTop: '24px', color: 'var(--color-g80)' }}>
               我們保證您的隱私，照片僅用於即時運算，不會儲存於伺服器。
             </p>
           </div>
@@ -293,21 +297,21 @@ const AIRecommendation = () => {
           <div style={{ maxWidth: '500px', margin: '0 auto' }}>
             {/* Analysis Result */}
             {isScanning ? (
-              <div style={{ padding: '60px 0', textAlign: 'center', backgroundColor: 'var(--color-g10)', borderRadius: '12px' }}>
-                <h3 className="tc-h3" style={{ color: 'var(--color-g80)', marginBottom: '16px' }}>AI 正在分析中...</h3>
+              <div style={{ padding: '60px 0', textAlign: 'center', backgroundColor: 'var(--color-g10)' }}>
+                <h3 className="tc-h5" style={{ color: 'var(--color-g80)', marginBottom: '16px' }}>AI 正在分析中...</h3>
                 <ul className="tc-body" style={{ color: 'var(--color-g60)', lineHeight: 2, display: 'inline-block', textAlign: 'left', listStyle: 'none', padding: 0 }}>
-                  <li>🔍 輪廓特徵擷取</li>
-                  <li>🎨 膚色調性判定</li>
-                  <li>📐 商品資料庫比對</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><MagnifyingGlass size={20} /> 輪廓特徵擷取</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Palette size={20} /> 膚色調性判定</li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Ruler size={20} /> 商品資料庫比對</li>
                 </ul>
               </div>
             ) : scanResult && (
-              <div style={{ padding: '40px', backgroundColor: 'var(--color-g10)', borderRadius: '12px' }}>
-                <h3 className="tc-h3" style={{ color: 'var(--color-g100)', marginBottom: '32px' }}>分析完成！</h3>
+              <div style={{ padding: '40px', backgroundColor: 'var(--color-g10)' }}>
+                <h3 className="tc-h5" style={{ color: 'var(--color-g100)', marginBottom: '32px' }}>分析完成！</h3>
                 <div style={{ marginBottom: '24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <span className="tc-body" style={{ color: 'var(--color-g60)', fontSize: '18px' }}>您的臉部輪廓：</span>
                   <select 
-                    className="tc-h3" style={{ padding: '8px 16px', borderRadius: '4px', border: '1px solid var(--color-g40)', color: 'var(--color-accent-earth)', backgroundColor: 'transparent' }}
+                    className="tc-h5" style={{ padding: '8px 16px', border: '1px solid var(--color-g40)', color: 'var(--color-accent-earth)', backgroundColor: 'transparent' }}
                     value={scanResult.faceShape}
                     onChange={(e) => setScanResult({...scanResult, faceShape: e.target.value})}
                   >
@@ -317,15 +321,15 @@ const AIRecommendation = () => {
                 <div style={{ marginBottom: '32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <span className="tc-body" style={{ color: 'var(--color-g60)', fontSize: '18px' }}>您的膚色調性：</span>
                   <select 
-                    className="tc-h3" style={{ padding: '8px 16px', borderRadius: '4px', border: '1px solid var(--color-g40)', color: 'var(--color-accent-earth)', backgroundColor: 'transparent' }}
+                    className="tc-h5" style={{ padding: '8px 16px', border: '1px solid var(--color-g40)', color: 'var(--color-accent-earth)', backgroundColor: 'transparent' }}
                     value={scanResult.skinTone}
                     onChange={(e) => setScanResult({...scanResult, skinTone: e.target.value})}
                   >
                     {skinTones.map(s => <option key={s} value={s}>{s}</option>)}
                   </select>
                 </div>
-                <p className="tc-caption" style={{ color: 'var(--color-g60)', lineHeight: 1.8 }}>
-                  * 這是模擬偵測的結果，您可以隨時在上方下拉選單手動調整，測試不同的推薦組合。
+                <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '32px', display: 'flex', gap: '8px', alignItems: 'center', justifyContent: 'center' }}>
+                  <Lightbulb size={20} weight="fill" color="var(--color-accent-earth)" /> 為了獲得最佳分析效果，請確保照片為<strong>「胸上正面照」</strong>且臉部清晰明亮
                 </p>
                 
                 <div style={{ marginTop: '32px', display: 'flex', gap: '16px' }}>
@@ -353,20 +357,20 @@ const AIRecommendation = () => {
           {recommendations.length > 0 ? (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '32px' }}>
               {recommendations.map(prod => (
-                <div key={prod.id} style={{ backgroundColor: 'var(--color-primary-white)', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+                <div key={prod.id} style={{ backgroundColor: 'var(--color-primary-white)', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
                   <Link to={`/product/${prod.id}`} style={{ display: 'block' }}>
-                    <div style={{ position: 'relative', paddingTop: '100%', backgroundColor: '#fcf7ed' }}>
+                    <div style={{ position: 'relative', paddingTop: '100%', backgroundColor: 'var(--color-primary-white)' }}>
                       <img src={prod.bestColor.img} alt={prod.name} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'contain', padding: '24px' }} />
                     </div>
                   </Link>
                   <div style={{ padding: '24px' }}>
-                    <p className="en-caption" style={{ color: 'var(--color-accent-earth)', marginBottom: '8px' }}>{prod.cat}</p>
+                    <p className="en-caption" style={{ color: 'var(--color-g80)', marginBottom: '8px' }}>{prod.cat}</p>
                     <Link to={`/product/${prod.id}`} style={{ textDecoration: 'none' }}>
-                      <h3 className="tc-h3" style={{ color: 'var(--color-g100)', marginBottom: '16px' }}>{prod.name} ({prod.bestColor.name})</h3>
+                      <h3 className="tc-h5" style={{ color: 'var(--color-g100)', marginBottom: '16px' }}>{prod.name} ({prod.bestColor.name})</h3>
                     </Link>
-                    <div style={{ padding: '16px', backgroundColor: 'var(--color-g10)', borderRadius: '8px', borderLeft: '3px solid var(--color-accent-earth)' }}>
+                    <div style={{ padding: '16px', backgroundColor: 'var(--color-g10)', borderLeft: '3px solid var(--color-accent-earth)' }}>
                       <p className="tc-caption" style={{ color: 'var(--color-g80)' }}>
-                        <strong>✨ AI 推薦理由：</strong><br/>
+                        <strong style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><Sparkle size={16} weight="fill" color="var(--color-accent-earth)" /> AI 推薦理由：</strong><br/>
                         {prod.bestColor.pitch}
                       </p>
                     </div>
@@ -376,7 +380,7 @@ const AIRecommendation = () => {
             </div>
           ) : (
             <div style={{ textAlign: 'center', padding: '40px' }}>
-              <p className="tc-body" style={{ color: 'var(--color-g60)' }}>抱歉，目前找不到同時符合您特徵的商品。<br/>歡迎嘗試其他風格！</p>
+              <p className="tc-body" style={{ color: 'var(--color-g80)' }}>抱歉，目前找不到同時符合您特徵的商品。<br/>歡迎嘗試其他風格！</p>
             </div>
           )}
         </div>

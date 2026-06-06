@@ -20,11 +20,11 @@
   --color-g100: #343230;
 
   /* Typography */
-  --font-en-primary: 'Ranade', sans-serif;
+  --font-en-primary: 'Jost', sans-serif;
   --font-en-body: 'Jost', sans-serif;
-  --font-tc-primary: 'Noto Serif TC', serif;
-  --font-tc-body: 'Noto Sans TC', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  --font-tc-primary: 'Jost', 'Noto Sans TC', sans-serif;
+  --font-tc-body: 'Jost', 'Noto Sans TC', sans-serif;
+  --font-mono: 'Jost', monospace;
 
   --spacing-base: 8px;
 }
@@ -48,24 +48,40 @@ body {
 /* Typography Utility Classes */
 .tc-h1 {
   font-family: var(--font-tc-primary);
-  font-weight: 500;
-  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 300;
+  font-size: clamp(28px, 3.8vw, 48px);
   line-height: 1.3;
   margin: 0;
 }
 
 .tc-h2 {
   font-family: var(--font-tc-primary);
-  font-weight: 500;
-  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 300;
+  font-size: clamp(24px, 3vw, 36px);
   line-height: 1.4;
   margin: 0;
 }
 
 .tc-h3 {
   font-family: var(--font-tc-primary);
-  font-weight: 500;
-  font-size: clamp(16px, 1.8vw, 18px);
+  font-weight: 300;
+  font-size: clamp(20px, 2.8vw, 32px);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.tc-h4 {
+  font-family: var(--font-tc-primary);
+  font-weight: 300;
+  font-size: clamp(18px, 2.2vw, 24px);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.tc-h5 {
+  font-family: var(--font-tc-primary);
+  font-weight: 300;
+  font-size: clamp(16px, 1.8vw, 20px);
   line-height: 1.5;
   margin: 0;
 }
@@ -73,8 +89,9 @@ body {
 .tc-body {
   font-family: var(--font-tc-body);
   font-weight: 300;
-  font-size: clamp(14px, 1.2vw, 15px);
-  line-height: 1.8;
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: 1.6;
+  margin: 0;
 }
 
 .tc-caption {
@@ -94,7 +111,7 @@ body {
 .en-h1 {
   font-family: var(--font-en-primary);
   font-weight: 300;
-  font-size: clamp(40px, 5vw, 60px);
+  font-size: clamp(28px, 3.8vw, 48px);
   line-height: 1.1;
   margin: 0;
 }
@@ -102,7 +119,7 @@ body {
 .en-h2 {
   font-family: var(--font-en-primary);
   font-weight: 300;
-  font-size: clamp(28px, 3.5vw, 40px);
+  font-size: clamp(24px, 3vw, 36px);
   line-height: 1.2;
   margin: 0;
 }
@@ -110,8 +127,26 @@ body {
 .en-h3 {
   font-family: var(--font-en-primary);
   font-weight: 300;
-  font-size: clamp(18px, 2vw, 22px);
+  font-size: clamp(20px, 2.8vw, 32px);
   line-height: 1.4;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+
+.en-h4 {
+  font-family: var(--font-en-primary);
+  font-weight: 300;
+  font-size: clamp(18px, 2.2vw, 24px);
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+
+.en-h5 {
+  font-family: var(--font-en-primary);
+  font-weight: 300;
+  font-size: clamp(16px, 1.8vw, 20px);
+  line-height: 1.5;
   letter-spacing: 0.1em;
   margin: 0;
 }
@@ -119,7 +154,7 @@ body {
 .en-body {
   font-family: var(--font-en-body);
   font-weight: 300;
-  font-size: clamp(14px, 1.2vw, 16px);
+  font-size: clamp(14px, 1.5vw, 16px);
   line-height: 1.65;
 }
 
@@ -204,6 +239,7 @@ button {
   background-color: var(--color-g100);
   color: var(--color-primary-white);
   font-family: var(--font-tc-body);
+  font-size: 16px;
   font-weight: 300;
   letter-spacing: 0.05em;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -220,6 +256,7 @@ button {
   border: 1px solid var(--color-g100);
   color: var(--color-g100);
   font-family: var(--font-tc-body);
+  font-size: 16px;
   font-weight: 300;
   letter-spacing: 0.05em;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
@@ -344,4 +381,29 @@ button {
   /* Mobile Padding */
   .container { padding: 40px var(--padding-x) !important; }
   .p-mobile { padding: 24px var(--padding-x) !important; }
+}
+
+/* Card Hover Effects */
+.story-card {
+  display: block;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  padding: 24px;
+  border-right: 1px solid var(--color-g20);
+  border-bottom: 1px solid var(--color-g20);
+}
+.story-card .img-container {
+  height: 220px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.story-card .img-bg {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.story-card:hover .img-bg {
+  transform: scale(1.05);
 }

@@ -354,5 +354,50 @@
       }
     ],
     "frameWidthMM": 140
+  },
+  {
+    "id": "OTW6021",
+    "name": "OTW6021",
+    "cat": "工藝系列",
+    "suitableFaceShapes": [
+      "方臉",
+      "心型臉",
+      "圓臉"
+    ],
+    "colors": [
+      {
+        "id": "OTW6021-1",
+        "name": "玳瑁",
+        "hex": "#4B3621",
+        "img": "/all_glasses/工藝系列/OTW6021/OTW6021-玳瑁.png",
+        "suitableSkinTones": [
+          "暖白皮",
+          "小麥色"
+        ],
+        "pitch": "職人手工打磨的玳瑁色鏡框，展現工藝美學與溫潤質感，能修飾臉部線條並為暖色調肌膚帶來好氣色。"
+      },
+      {
+        "id": "OTW6021-2",
+        "name": "透灰",
+        "hex": "#808080",
+        "img": "/all_glasses/工藝系列/OTW6021/OTW6021-透灰.png",
+        "suitableSkinTones": [
+          "冷白皮"
+        ],
+        "pitch": "通透清澈的灰調工藝框，輕盈俐落不壓五官，完美襯托冷色調肌膚的高雅氣質。"
+      },
+      {
+        "id": "OTW6021-3",
+        "name": "透藍",
+        "hex": "#4A90E2",
+        "img": "/all_glasses/工藝系列/OTW6021/OTW6021-透藍.png",
+        "suitableSkinTones": [
+          "暖白皮",
+          "冷白皮"
+        ],
+        "pitch": "獨特透藍光澤在光線折射下盡顯職人巧思，為任何膚色帶來清新脫俗的視覺亮點。"
+      }
+    ],
+    "frameWidthMM": 140
   }
 ]

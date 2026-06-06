@@ -7,7 +7,9 @@
     "phone": "02-2521-1234",
     "hours": "11:00 - 22:00",
     "models": ["5013", "N401", "23883", "5006"],
-    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台北市中山區南京西路12號"
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台北市中山區南京西路12號",
+    "lat": 25.052,
+    "lng": 121.520
   },
   {
     "id": "s02",
@@ -17,7 +19,9 @@
     "phone": "02-2771-5678",
     "hours": "11:00 - 22:00",
     "models": ["5013", "23883"],
-    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台北市大安區忠孝東路四段100號"
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台北市大安區忠孝東路四段100號",
+    "lat": 25.041,
+    "lng": 121.545
   },
   {
     "id": "s03",
@@ -27,7 +31,9 @@
     "phone": "02-2723-9012",
     "hours": "11:00 - 23:00",
     "models": ["N401", "5006"],
-    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台北市信義區松壽路20號"
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台北市信義區松壽路20號",
+    "lat": 25.035,
+    "lng": 121.567
   },
   {
     "id": "s04",
@@ -37,7 +43,9 @@
     "phone": "02-2959-3456",
     "hours": "11:00 - 22:00",
     "models": ["5013", "N401", "23883", "5006"],
-    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=新北市板橋區新站路28號"
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=新北市板橋區新站路28號",
+    "lat": 25.014,
+    "lng": 121.465
   },
   {
     "id": "s05",
@@ -47,7 +55,9 @@
     "phone": "02-2222-7890",
     "hours": "11:00 - 22:00",
     "models": ["5013", "5006"],
-    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=新北市中和區中山路三段122號"
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=新北市中和區中山路三段122號",
+    "lat": 25.006,
+    "lng": 121.474
   },
   {
     "id": "s06",
@@ -57,7 +67,9 @@
     "phone": "03-333-1111",
     "hours": "11:00 - 21:30",
     "models": ["N401", "23883"],
-    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=桃園市桃園區中正路61號"
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=桃園市桃園區中正路61號",
+    "lat": 24.992,
+    "lng": 121.312
   },
   {
     "id": "s07",
@@ -67,7 +79,9 @@
     "phone": "03-532-2222",
     "hours": "11:00 - 21:30",
     "models": ["5013", "N401", "23883", "5006"],
-    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=新竹市東區中央路229號"
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=新竹市東區中央路229號",
+    "lat": 24.809,
+    "lng": 120.974
   },
   {
     "id": "s08",
@@ -77,7 +91,9 @@
     "phone": "04-2326-3333",
     "hours": "11:00 - 22:00",
     "models": ["5013", "23883", "5006"],
-    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台中市西區公益路68號"
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台中市西區公益路68號",
+    "lat": 24.151,
+    "lng": 120.663
   },
   {
     "id": "s09",
@@ -87,7 +103,9 @@
     "phone": "04-2255-4444",
     "hours": "11:00 - 22:00",
     "models": ["N401", "5006"],
-    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台中市西屯區台灣大道三段301號"
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台中市西屯區台灣大道三段301號",
+    "lat": 24.164,
+    "lng": 120.643
   },
   {
     "id": "s10",
@@ -97,7 +115,9 @@
     "phone": "06-303-5555",
     "hours": "11:00 - 22:00",
     "models": ["5013", "N401", "23883"],
-    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台南市中西區西門路一段658號"
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台南市中西區西門路一段658號",
+    "lat": 22.987,
+    "lng": 120.197
   },
   {
     "id": "s11",
@@ -107,7 +127,9 @@
     "phone": "07-555-6666",
     "hours": "11:00 - 22:30",
     "models": ["5013", "N401", "23883", "5006"],
-    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=高雄市左營區博愛二路777號"
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=高雄市左營區博愛二路777號",
+    "lat": 22.669,
+    "lng": 120.302
   },
   {
     "id": "s12",
@@ -117,6 +139,104 @@
     "phone": "07-823-7777",
     "hours": "11:00 - 22:00",
     "models": ["5013", "23883"],
-    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=高雄市前鎮區中華五路789號"
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=高雄市前鎮區中華五路789號",
+    "lat": 22.595,
+    "lng": 120.306
+  },
+  {
+    "id": "s13",
+    "name": "寶島眼鏡 台中崇德店",
+    "region": "台中市",
+    "address": "台中市北屯區崇德路二段100號",
+    "phone": "04-2244-1111",
+    "hours": "10:30 - 21:30",
+    "models": ["5013", "N401"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台中市北屯區崇德路二段100號",
+    "lat": 24.175,
+    "lng": 120.686
+  },
+  {
+    "id": "s14",
+    "name": "寶島眼鏡 台中黎明店",
+    "region": "台中市",
+    "address": "台中市南屯區黎明路二段200號",
+    "phone": "04-2255-2222",
+    "hours": "11:00 - 22:00",
+    "models": ["23883", "5006"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台中市南屯區黎明路二段200號",
+    "lat": 24.148,
+    "lng": 120.635
+  },
+  {
+    "id": "s15",
+    "name": "寶島眼鏡 台中中友店",
+    "region": "台中市",
+    "address": "台中市北區三民路三段161號",
+    "phone": "04-2225-3333",
+    "hours": "11:00 - 22:00",
+    "models": ["5013", "5006", "N401"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台中市北區三民路三段161號",
+    "lat": 24.152,
+    "lng": 120.685
+  },
+  {
+    "id": "s16",
+    "name": "寶島眼鏡 台中文心秀泰店",
+    "region": "台中市",
+    "address": "台中市南屯區文心南路289號",
+    "phone": "04-2473-4444",
+    "hours": "11:00 - 22:00",
+    "models": ["23883", "N401"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台中市南屯區文心南路289號",
+    "lat": 24.129,
+    "lng": 120.645
+  },
+  {
+    "id": "s17",
+    "name": "寶島眼鏡 台中逢甲店",
+    "region": "台中市",
+    "address": "台中市西屯區福星路300號",
+    "phone": "04-2451-5555",
+    "hours": "12:00 - 23:00",
+    "models": ["5013", "N401", "23883"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台中市西屯區福星路300號",
+    "lat": 24.177,
+    "lng": 120.645
+  },
+  {
+    "id": "s18",
+    "name": "寶島眼鏡 台中大遠百店",
+    "region": "台中市",
+    "address": "台中市西屯區台灣大道三段251號",
+    "phone": "04-2254-6666",
+    "hours": "11:00 - 22:00",
+    "models": ["5013", "5006"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台中市西屯區台灣大道三段251號",
+    "lat": 24.164,
+    "lng": 120.644
+  },
+  {
+    "id": "s19",
+    "name": "寶島眼鏡 台中廣三SOGO店",
+    "region": "台中市",
+    "address": "台中市西區台灣大道二段459號",
+    "phone": "04-2328-7777",
+    "hours": "11:00 - 22:00",
+    "models": ["N401", "23883", "5006"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台中市西區台灣大道二段459號",
+    "lat": 24.155,
+    "lng": 120.663
+  },
+  {
+    "id": "s20",
+    "name": "寶島眼鏡 台中一中店",
+    "region": "台中市",
+    "address": "台中市北區一中街100號",
+    "phone": "04-2223-8888",
+    "hours": "11:00 - 22:30",
+    "models": ["5013", "N401"],
+    "mapLink": "https://www.google.com/maps/dir/?api=1&destination=台中市北區一中街100號",
+    "lat": 24.150,
+    "lng": 120.685
   }
 ]

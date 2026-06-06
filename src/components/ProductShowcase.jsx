@@ -28,7 +28,7 @@ const ProductShowcase = () => {
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
           <h2 className="tc-h2" style={{ color: 'var(--color-g100)', marginBottom: '16px' }}>純鈦系列</h2>
-          <p className="tc-body" style={{ color: 'var(--color-g70)' }}>所有產品均採用 100% 純鈦，非合金，材質純度可驗證。</p>
+          <p className="tc-body" style={{ color: 'var(--color-g80)' }}>所有產品均採用 100% 純鈦，非合金，材質純度可驗證。</p>
         </div>
         
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px' }}>
@@ -36,7 +36,6 @@ const ProductShowcase = () => {
             <Link to={`/product/${p.id}`} key={p.id} style={{ 
               display: 'block',
               backgroundColor: 'var(--color-primary-white)', 
-              borderRadius: '8px', 
               overflow: 'hidden',
               boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
               transition: 'transform 0.3s ease, box-shadow 0.3s ease',
@@ -59,8 +58,8 @@ const ProductShowcase = () => {
                 />
               </div>
               <div style={{ padding: '32px' }}>
-                <h3 className="tc-h3" style={{ marginBottom: '12px', color: 'var(--color-g100)' }}>{p.name}</h3>
-                <p className="tc-body" style={{ color: 'var(--color-g70)' }}>{p.desc}</p>
+                <h3 className="tc-h5" style={{ marginBottom: '12px', color: 'var(--color-g100)' }}>{p.name}</h3>
+                <p className="tc-body" style={{ color: 'var(--color-g80)' }}>{p.desc}</p>
               </div>
             </Link>
           ))}

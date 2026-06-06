@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { ArrowLeft } from '@phosphor-icons/react';
 import allStories from '../data/stories.json';
 import allProducts from '../data/products.json';
 
@@ -21,28 +22,39 @@ const StoryDetail = () => {
     ? allProducts.find(p => p.id === story.recommendedProductId)
     : null;
 
+  let recommendedColor = recommendedProduct?.colors?.[0];
+  if (recommendedProduct && story.recommendedProductColor) {
+    const matchedColor = recommendedProduct.colors.find(c => c.name === story.recommendedProductColor);
+    if (matchedColor) {
+      recommendedColor = matchedColor;
+    }
+  }
+
   // Get 3 related stories from the same category
   const relatedStories = allStories
     .filter(s => s.category === story.category && s.id !== story.id)
     .slice(0, 3);
 
   return (
-    <div style={{ backgroundColor: 'var(--color-primary-white)' }}>
+    <div style={{ backgroundColor: 'var(--color-primary-white)', position: 'relative' }}>
+      <button onClick={() => navigate('/stories?category=' + encodeURIComponent(story.category))} style={{ position: 'absolute', top: '24px', right: 'var(--padding-x)', zIndex: 10, display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', fontSize: '14px', color: 'var(--color-g80)', backgroundColor: 'transparent', border: 'none', cursor: 'pointer' }}>
+        <ArrowLeft size={16} /> 返回列表
+      </button>
       {/* Editorial Split Header */}
       <div className="grid-2">
-         <div style={{ width: '100%', aspectRatio: '3/2', backgroundImage: `url(${story.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+         <div style={{ width: '100%', height: '100%', minHeight: '400px', backgroundImage: `url(${story.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
          <div style={{ padding: '10vw var(--padding-x)', display: 'flex', flexDirection: 'column', justifyContent: 'center', backgroundColor: 'var(--color-g10)' }}>
-            <p className="tc-body" style={{ color: 'var(--color-accent-earth)', marginBottom: '24px', letterSpacing: '0.1em' }}>
-              {story.category} / {story.name}
-            </p>
-            <h1 className="tc-h1" style={{ color: 'var(--color-g100)', marginBottom: '40px', lineHeight: 1.4 }}>
-              {story.title}
-            </h1>
+            <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+              <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '16px', letterSpacing: '0.1em' }}>{story.category}</p>
+              <h1 className="tc-h1" style={{ color: 'var(--color-g100)', marginBottom: '40px', lineHeight: 1.4 }}>
+                {story.title}
+              </h1>
+            </div>
          </div>
       </div>
 
       {/* Article Content */}
-      <div className="container" style={{ padding: '120px var(--padding-x)', maxWidth: '800px', margin: '0 auto' }}>
+      <div className="container" style={{ padding: '100px var(--padding-x)', maxWidth: '800px', margin: '0 auto' }}>
         
         {story.paragraphs.map((p, idx) => {
           // Put the quote in the middle (e.g. after the first paragraph)
@@ -54,7 +66,7 @@ const StoryDetail = () => {
                   paddingLeft: '32px', 
                   margin: '80px 0',
                 }}>
-                  <p className="tc-h2" style={{ color: 'var(--color-g100)', lineHeight: 1.5, margin: 0 }}>
+                  <p className="tc-h2" style={{ color: 'var(--color-g80)', lineHeight: 1.5, margin: 0 }}>
                     「{story.quote}」
                   </p>
                 </blockquote>
@@ -82,7 +94,6 @@ const StoryDetail = () => {
                   backgroundColor: 'var(--color-g10)',
                   color: 'var(--color-g80)',
                   padding: '8px 16px',
-                  borderRadius: '20px',
                   fontSize: '14px',
                   textDecoration: 'none',
                   transition: 'background-color 0.3s'
@@ -97,21 +108,21 @@ const StoryDetail = () => {
         )}
 
         {/* Product Recommendation Block */}
-        {story.category === '職人故事' && recommendedProduct && (
-          <div style={{ marginTop: '100px', padding: '60px', backgroundColor: 'var(--color-g10)', borderRadius: '8px', textAlign: 'center' }}>
-            <p className="en-caption" style={{ color: 'var(--color-g60)', marginBottom: '24px' }}>RECOMMENDED EYEWEAR</p>
-            <h3 className="tc-h2" style={{ color: 'var(--color-g100)', marginBottom: '16px' }}>{recommendedProduct.cat} - {recommendedProduct.name}</h3>
+        {story.category === '職人故事' && recommendedProduct && recommendedColor && (
+          <div style={{ marginTop: '100px', padding: '60px', backgroundColor: 'var(--color-g10)', textAlign: 'center' }}>
+            <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '24px', letterSpacing: '0.1em' }}>相關產品</p>
+            <h4 className="tc-h4" style={{ color: 'var(--color-g100)', marginBottom: '16px' }}>{recommendedProduct.cat} - {recommendedProduct.name} ({recommendedColor.name})</h4>
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '32px' }}>
-              <img src={recommendedProduct.colors[0].img} alt={recommendedProduct.name} style={{ width: '100%', maxWidth: '300px', objectFit: 'contain' }} />
+              <img src={recommendedColor.img} alt={`${recommendedProduct.name} ${recommendedColor.name}`} style={{ width: '100%', maxWidth: '300px', objectFit: 'contain' }} />
             </div>
-            <Link to={`/product/${recommendedProduct.id}`} className="btn-primary" style={{ padding: '12px 40px' }}>
+            <Link to={`/product/${recommendedProduct.id}?color=${recommendedColor.name}`} className="btn-primary" style={{ padding: '12px 40px' }}>
               探索此鏡框細節
             </Link>
           </div>
         )}
 
-        <div style={{ textAlign: 'center', marginTop: '80px', paddingBottom: '80px' }}>
-          <Link to="/stories" className="btn-outline">返回列表</Link>
+        <div style={{ textAlign: 'center', marginTop: '80px' }}>
+          <Link to={`/stories?category=${encodeURIComponent(story.category)}`} className="btn-outline">返回列表</Link>
         </div>
       </div>
 
@@ -124,13 +135,26 @@ const StoryDetail = () => {
             </h3>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2px', backgroundColor: 'var(--color-g20)' }}>
               {relatedStories.map(related => (
-                <Link to={`/stories/${related.id}`} key={related.id} style={{ display: 'block', backgroundColor: 'var(--color-primary-white)', padding: '24px', textDecoration: 'none' }}>
-                  <div style={{ height: '200px', backgroundImage: `url(${related.img})`, backgroundSize: 'cover', backgroundPosition: 'center', marginBottom: '24px' }}></div>
-                  <p className="tc-body" style={{ color: 'var(--color-accent-earth)', marginBottom: '12px', fontSize: '14px', letterSpacing: '0.1em' }}>
+                <Link to={`/stories/${related.id}`} key={related.id} className="story-card">
+                  <div className="img-container">
+                    <div className="img-bg" style={{ backgroundImage: `url(${related.img})` }}></div>
+                  </div>
+                  <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '12px', fontSize: '14px', letterSpacing: '0.1em' }}>
                     {related.category}
                   </p>
-                  <h4 className="tc-h3" style={{ color: 'var(--color-g100)', marginBottom: '16px' }}>{related.title}</h4>
-                  <p className="tc-body" style={{ color: 'var(--color-g60)', fontSize: '14px' }}>{related.name}</p>
+                  <h4 className="tc-h5" style={{ color: 'var(--color-g100)', marginBottom: '16px' }}>{related.title}</h4>
+                  <p className="tc-body" style={{ 
+                    color: 'var(--color-g80)', 
+                    fontSize: '14px',
+                    display: '-webkit-box',
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    margin: 0
+                  }}>
+                    {related.paragraphs && related.paragraphs[0]}
+                  </p>
                 </Link>
               ))}
             </div>

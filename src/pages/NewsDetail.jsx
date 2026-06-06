@@ -14,9 +14,9 @@ const NewsDetail = () => {
       
       {/* Article Header */}
       <div className="container" style={{ paddingTop: '100px', paddingBottom: '60px', maxWidth: '1000px', textAlign: 'center' }}>
-        <p className="en-caption" style={{ color: 'var(--color-accent-earth)', marginBottom: '24px' }}>最新公告</p>
+        <p className="en-caption" style={{ color: 'var(--color-g80)', marginBottom: '16px', letterSpacing: '0.2em' }}>NEWS</p>
         <h1 className="tc-h1" style={{ marginBottom: '24px', color: 'var(--color-g100)' }}>全新「羽毛鈦 Signature」系列上市</h1>
-        <p className="mono" style={{ color: 'var(--color-g60)' }}>2026.05.20</p>
+        <p className="mono" style={{ color: 'var(--color-g80)' }}>2026.05.20 / 最新公告</p>
       </div>
 
       {/* Hero Image */}
@@ -60,10 +60,10 @@ const NewsDetail = () => {
                      onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'} />
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
-                     <p className="en-caption" style={{ color: 'var(--color-accent-earth)' }}>{item.category}</p>
+                     <p className="en-caption" style={{ color: 'var(--color-g80)' }}>{item.category}</p>
                      <span className="mono" style={{ color: 'var(--color-g60)' }}>{item.date}</span>
                   </div>
-                  <h3 className="tc-h3" style={{ color: 'var(--color-g100)' }}>{item.title}</h3>
+                  <h3 className="tc-h5" style={{ color: 'var(--color-g100)' }}>{item.title}</h3>
                 </Link>
               ))}
             </div>

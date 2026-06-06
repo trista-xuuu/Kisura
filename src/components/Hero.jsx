@@ -26,9 +26,9 @@ const Hero = () => {
       }} />
       
       <div style={{ textAlign: 'center', position: 'relative', zIndex: 1 }} className="fade-in-up">
-        <h1 className="tc-h1" style={{ marginBottom: '24px', color: 'var(--color-g100)' }}>心無旁騖，只做自己。</h1>
-        <p className="en-h3" style={{ color: 'var(--color-accent-earth)' }}>NOTHING IN THE WAY.</p>
-        <p className="en-h3" style={{ color: 'var(--color-accent-earth)' }}>EVERYTHING IN YOU.</p>
+        <h1 className="tc-h1" style={{ marginBottom: '24px', color: 'var(--color-g100)' }}>心無旁騖，只做自己</h1>
+        <p className="en-h5" style={{ color: 'var(--color-g80)' }}>NOTHING IN THE WAY.</p>
+        <p className="en-h5" style={{ color: 'var(--color-g80)' }}>EVERYTHING IN YOU.</p>
       </div>
     </section>
   );

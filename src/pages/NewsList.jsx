@@ -33,8 +33,8 @@ const NewsList = () => {
   return (
     <div style={{ backgroundColor: 'var(--color-primary-white)', paddingBottom: '120px' }}>
       <div style={{ padding: '80px var(--padding-x)', textAlign: 'center', backgroundColor: 'var(--color-g10)' }}>
+        <p className="en-caption" style={{ color: 'var(--color-g80)', marginBottom: '16px', letterSpacing: '0.2em' }}>LATEST NEWS</p>
         <h1 className="tc-h1" style={{ color: 'var(--color-g100)', marginBottom: '16px' }}>最新消息</h1>
-        <p className="en-h3" style={{ color: 'var(--color-g60)', letterSpacing: '0.1em' }}>JOURNAL & NEWS</p>
       </div>
 
       {/* Tabs */}
@@ -66,15 +66,15 @@ const NewsList = () => {
                  onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'} />
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
-                 <p className="en-caption" style={{ color: 'var(--color-accent-earth)' }}>{item.category}</p>
+                 <p className="en-caption" style={{ color: 'var(--color-g80)' }}>{item.category}</p>
                  <span className="mono" style={{ color: 'var(--color-g60)' }}>{item.date}</span>
               </div>
-              <h2 className="tc-h3" style={{ color: 'var(--color-g100)' }}>{item.title}</h2>
+              <h2 className="tc-h5" style={{ color: 'var(--color-g100)' }}>{item.title}</h2>
             </Link>
           ))}
         </div>
         {filteredNews.length === 0 && (
-          <p className="tc-body" style={{ textAlign: 'center', color: 'var(--color-g60)', marginTop: '40px' }}>此分類目前沒有最新消息。</p>
+          <p className="tc-body" style={{ textAlign: 'center', color: 'var(--color-g80)', marginTop: '40px' }}>此分類目前沒有最新消息。</p>
         )}
       </div>
     </div>

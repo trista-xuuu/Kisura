@@ -9,19 +9,19 @@ import 'swiper/css/pagination';
 const HeroSlider = () => {
   const slides = [
     {
-      image: '/context/Gemini_Generated_Image_a66b23a66b23a66b.png',
-      title: '心無旁騖，只做自己。',
+      image: '/index/index_14.png',
+      title: '心無旁騖，只做自己',
       subtitle: 'NOTHING IN THE WAY',
       link: '/products'
     },
     {
-      image: '/model/Gemini_Generated_Image_3fqmay3fqmay3fqm.png',
-      title: '極致輕盈，專注當下。',
+      image: '/index/index_2.png',
+      title: '極致輕盈，專注當下',
       subtitle: 'PURE AND PRECISE',
       link: '/products'
     },
     {
-      image: '/context/Gemini_Generated_Image_77o7ff77o7ff77o7.png',
+      image: '/index/index_1.png',
       title: '頂級純鈦的體感',
       subtitle: 'CRAFTED WITH INTENT',
       link: '/products'
@@ -29,7 +29,7 @@ const HeroSlider = () => {
   ];
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: 'calc(100dvh - 70px)', minHeight: '400px', width: '100%' }}>
       <Swiper
         modules={[Autoplay, EffectFade, Pagination]}
         effect="fade"
@@ -53,12 +53,13 @@ const HeroSlider = () => {
               
               <div style={{ 
                 position: 'absolute', 
-                bottom: '10%', 
+                top: '50%',
+                transform: 'translateY(-50%)',
                 left: 'var(--padding-x)', 
                 color: '#FFFFFF'
               }}>
-                <p className="en-h3 fade-in-up" style={{ marginBottom: '16px', letterSpacing: '0.2em' }}>{slide.subtitle}</p>
-                <h2 className="en-h1 fade-in-up" style={{ animationDelay: '0.2s', marginBottom: '32px' }}>{slide.title}</h2>
+                <p className="en-h5 fade-in-up" style={{ marginBottom: '16px', letterSpacing: '0.2em' }}>{slide.subtitle}</p>
+                <h2 className="tc-h1 fade-in-up" style={{ animationDelay: '0.2s', marginBottom: '32px', color: '#FFF' }}>{slide.title}</h2>
                 <div className="fade-in-up" style={{ animationDelay: '0.4s' }}>
                   <Link to={slide.link} className="btn-primary" style={{ backgroundColor: '#FFFFFF', color: '#000000', padding: '16px 40px', textDecoration: 'none' }}>探索系列</Link>
                 </div>
