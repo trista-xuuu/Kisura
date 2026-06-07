@@ -83,7 +83,7 @@ const Home = () => {
           <p className="tc-body" style={{ color: 'var(--color-g80)' }}>100% 純鈦，非合金，材質純度可驗證</p>
         </div>
         
-        <div className="grid-1-mobile" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2px', backgroundColor: 'var(--color-g20)', border: '1px solid var(--color-g20)' }}>
+        <div className="grid-2-tablet grid-1-mobile" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2px', backgroundColor: 'var(--color-g20)', border: '1px solid var(--color-g20)' }}>
            {Array.from(new Set(allProducts.map(p => p.cat))).map(catName => {
              let img = '';
              if (catName === '經典系列') {

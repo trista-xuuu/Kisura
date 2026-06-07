@@ -404,20 +404,14 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="number"]
     --spacing-section-y: 80px;
   }
   
-  /* Utilities */
+  /* Nav Utilities */
   .logo-container { justify-content: flex-start !important; }
   .hide-mobile { display: none !important; }
   .show-mobile { display: block !important; }
   .show-mobile-flex { display: flex !important; }
-  .flex-col-mobile { flex-direction: column !important; }
-  .flex-col-reverse-mobile { flex-direction: column-reverse !important; }
-  .align-start-mobile { align-items: flex-start !important; text-align: left !important; }
-  .grid-1-mobile { grid-template-columns: 1fr !important; }
-  .text-center-mobile { text-align: center !important; }
-  .w-100-mobile { width: 100% !important; }
-  .h-auto-mobile { height: auto !important; min-height: auto !important; }
-  .gap-mobile-16 { gap: 16px !important; }
-  .gap-mobile-24 { gap: 24px !important; }
+
+  /* Tablet Grid Override */
+  .grid-2-tablet { grid-template-columns: 1fr 1fr !important; }
   
   /* Tablet Padding */
   .container { padding-left: var(--padding-x) !important; padding-right: var(--padding-x) !important; }
@@ -439,6 +433,17 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="number"]
   
   /* Mobile Padding */
   .container { padding-left: var(--padding-x) !important; padding-right: var(--padding-x) !important; }
+
+  /* Mobile Layout Utilities */
+  .flex-col-mobile { flex-direction: column !important; }
+  .flex-col-reverse-mobile { flex-direction: column-reverse !important; }
+  .align-start-mobile { align-items: flex-start !important; text-align: left !important; }
+  .grid-1-mobile { grid-template-columns: 1fr !important; }
+  .text-center-mobile { text-align: center !important; }
+  .w-100-mobile { width: 100% !important; }
+  .h-auto-mobile { height: auto !important; min-height: auto !important; }
+  .gap-mobile-16 { gap: 16px !important; }
+  .gap-mobile-24 { gap: 24px !important; }
 
 }
 
