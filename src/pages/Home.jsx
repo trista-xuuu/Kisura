@@ -21,8 +21,8 @@ const Home = () => {
       <div className="grid-2">
          <div className="text-block-padding" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <p className="en-caption" style={{ color: 'var(--color-g80)', marginBottom: '16px' }}>ABOUT KISURA</p>
-            <h2 className="tc-h2 nowrap-desktop" style={{ color: 'var(--color-g100)', marginBottom: '20px' }}>用理性的純鈦，溫柔承載你感性的視界故事</h2>
-            <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '28px', maxWidth: '400px' }}>
+            <h2 className="tc-h2" style={{ color: 'var(--color-g100)', marginBottom: '20px' }}>用理性的純鈦，溫柔承載你感性的視界故事</h2>
+            <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '28px' }}>
               KISURA 專注於極輕、抗敏的純鈦工藝。我們不盲目追求快時尚，而是依據當代工作者的生活型態進行框型微調與迭代。
             </p>
             <div>
@@ -38,7 +38,7 @@ const Home = () => {
          <div className="text-block-padding" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <p className="en-caption" style={{ color: 'var(--color-g80)', marginBottom: '16px' }}>AI RECOMMENDATION</p>
             <h2 className="tc-h2" style={{ color: 'var(--color-g100)', marginBottom: '20px' }}>不知道哪副眼鏡最適合我？</h2>
-            <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '28px', maxWidth: '400px' }}>
+            <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '28px' }}>
               透過 AI 臉部解析技術，為你精準辨識臉型與膚色，從眾多款式中一鍵挑選最能修飾你臉部線條的專屬鏡框。
             </p>
             <div>
