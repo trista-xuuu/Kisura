@@ -61,7 +61,7 @@ const HeroSlider = () => {
                 <p className="en-h5 fade-in-up" style={{ marginBottom: '16px', letterSpacing: '0.2em' }}>{slide.subtitle}</p>
                 <h2 className="tc-h1 fade-in-up" style={{ animationDelay: '0.2s', marginBottom: '32px', color: '#FFF' }}>{slide.title}</h2>
                 <div className="fade-in-up" style={{ animationDelay: '0.4s' }}>
-                  <Link to={slide.link} className="btn-primary" style={{ backgroundColor: '#FFFFFF', color: '#000000', padding: '16px 40px', textDecoration: 'none' }}>探索系列</Link>
+                  <Link to={slide.link} className="btn-primary" style={{ backgroundColor: '#FFFFFF', color: '#000000', padding: '16px 40px', textDecoration: 'none' }}>探索產品</Link>
                 </div>
               </div>
             </div>
