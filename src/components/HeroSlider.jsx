@@ -12,19 +12,19 @@ const HeroSlider = () => {
       image: '/index/index_14.png',
       title: '心無旁騖，只做自己',
       subtitle: 'NOTHING IN THE WAY',
-      link: '/products'
+      link: '/explore'
     },
     {
       image: '/index/index_2.png',
       title: '極致輕盈，專注當下',
       subtitle: 'PURE AND PRECISE',
-      link: '/products'
+      link: '/explore'
     },
     {
       image: '/index/index_1.png',
       title: '頂級純鈦的體感',
       subtitle: 'CRAFTED WITH INTENT',
-      link: '/products'
+      link: '/explore'
     }
   ];
 
