@@ -136,7 +136,7 @@ const StoryDetail = () => {
       {relatedStories.length > 0 && (
         <div style={{ backgroundColor: 'var(--color-g10)', padding: '80px 0 40px 0' }}>
           <h3 className="tc-h2" style={{ color: 'var(--color-g100)', marginBottom: '20px', textAlign: 'center' }}>
-            你可能喜歡
+            你可能也喜歡
           </h3>
           <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 var(--padding-x)' }}>
             <Swiper

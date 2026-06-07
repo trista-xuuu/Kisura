@@ -46,59 +46,63 @@ const Header = () => {
         <div style={{ height: '70px', padding: '0 var(--padding-x)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
 
 
-          {/* Desktop Left Nav */}
-          <div className="hide-mobile" style={{ flex: 1, display: 'flex', gap: '32px', alignItems: 'center' }}>
-            <Link to="/story" className="tc-body" style={{ color: 'var(--color-g100)' }}>品牌故事</Link>
-            <div className="nav-dropdown-wrapper">
-               <Link to="/explore" className="tc-body" style={{ color: 'var(--color-g100)', display: 'flex', alignItems: 'center' }}>
-                 探索產品
-                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '6px' }}>
-                   <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                 </svg>
-               </Link>
-               <div className="nav-dropdown">
-                  <Link to="/explore?gender=all">所有框型</Link>
-                  <Link to="/explore?gender=men">男士框</Link>
-                  <Link to="/explore?gender=women">女士框</Link>
-                  <Link to="/explore?gender=unisex">中性框</Link>
-               </div>
+          {/* Left Section: Logo + Desktop Nav */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '48px' }}>
+            
+            {/* Logo Center / Left on Mobile */}
+            <div className="logo-container" style={{ display: 'flex' }}>
+              <Link to="/">
+                <img src="/logo/logo_1.svg" alt="KISURA EYEWEAR" style={{ height: '25.2px', display: 'block', transform: 'scale(1.05)', transformOrigin: 'left center' }} />
+              </Link>
             </div>
-            <div className="nav-dropdown-wrapper">
-               <Link to="/products" className="tc-body" style={{ color: 'var(--color-g100)', display: 'flex', alignItems: 'center' }}>
-                 探索系列
-                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '6px' }}>
-                   <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                 </svg>
-               </Link>
-               <div className="nav-dropdown">
-                  {categories.map(cat => (
-                     <Link key={cat} to={`/products?category=${cat}`}>{cat}</Link>
-                  ))}
-               </div>
+
+            {/* Desktop Left Nav */}
+            <div className="hide-mobile" style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
+              <Link to="/story" className="tc-body" style={{ color: 'var(--color-g100)' }}>品牌故事</Link>
+              <div className="nav-dropdown-wrapper">
+                 <Link to="/explore" className="tc-body" style={{ color: 'var(--color-g100)', display: 'flex', alignItems: 'center' }}>
+                   探索產品
+                   <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '6px' }}>
+                     <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                   </svg>
+                 </Link>
+                 <div className="nav-dropdown">
+                    <Link to="/explore?gender=all">所有框型</Link>
+                    <Link to="/explore?gender=men">男士框</Link>
+                    <Link to="/explore?gender=women">女士框</Link>
+                    <Link to="/explore?gender=unisex">中性框</Link>
+                 </div>
+              </div>
+              <div className="nav-dropdown-wrapper">
+                 <Link to="/products" className="tc-body" style={{ color: 'var(--color-g100)', display: 'flex', alignItems: 'center' }}>
+                   探索系列
+                   <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '6px' }}>
+                     <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                   </svg>
+                 </Link>
+                 <div className="nav-dropdown">
+                    {categories.map(cat => (
+                       <Link key={cat} to={`/products?category=${cat}`}>{cat}</Link>
+                    ))}
+                 </div>
+              </div>
+              <div className="nav-dropdown-wrapper">
+                 <Link to="/stories" className="tc-body" style={{ color: 'var(--color-g100)', display: 'flex', alignItems: 'center' }}>
+                   探索故事
+                   <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '6px' }}>
+                     <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                   </svg>
+                 </Link>
+                 <div className="nav-dropdown">
+                    <Link to="/stories?category=職人故事">職人故事</Link>
+                    <Link to="/stories?category=眼鏡知識">眼鏡知識</Link>
+                 </div>
+              </div>
             </div>
-            <div className="nav-dropdown-wrapper">
-               <Link to="/stories" className="tc-body" style={{ color: 'var(--color-g100)', display: 'flex', alignItems: 'center' }}>
-                 探索故事
-                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '6px' }}>
-                   <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                 </svg>
-               </Link>
-               <div className="nav-dropdown">
-                  <Link to="/stories?category=職人故事">職人故事</Link>
-                  <Link to="/stories?category=眼鏡知識">眼鏡知識</Link>
-               </div>
-            </div>
-          </div>
-          
-          {/* Logo Center / Left on Mobile */}
-          <div className="logo-container" style={{ flex: 1, display: 'flex' }}>
-            <Link to="/">
-              <img src="/logo/logo_1.svg" alt="KISURA EYEWEAR" style={{ height: '25.2px', display: 'block', transform: 'scale(1.05)', transformOrigin: 'left center' }} />
-            </Link>
           </div>
 
           {/* Desktop Right Nav */}
-          <div className="hide-mobile" style={{ flex: 1, display: 'flex', justifyContent: 'flex-end', gap: '24px', alignItems: 'center' }}>
+          <div className="hide-mobile" style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
             <Link to="/recommend" className="tc-body" style={{ color: 'var(--color-g100)', display: 'flex', alignItems: 'center', gap: '4px' }}><Sparkle size={16} /> AI 推薦</Link>
             <Link to="/stores" className="tc-body" style={{ color: 'var(--color-g100)', display: 'flex', alignItems: 'center', gap: '4px' }}><MapPin size={16} /> 合作通路</Link>
           </div>

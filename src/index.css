@@ -1,6 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Noto+Sans+TC:wght@300;400&family=Noto+Serif+TC:wght@400;500&family=IBM+Plex+Mono&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=ranade@300,400&display=swap');
 
+.nowrap-desktop {
+  white-space: nowrap;
+}
+
+.filter-dropdown-col {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1 1 200px;
+  max-width: 300px;
+}
+
+.store-filters-col {
+  display: flex;
+  gap: 8px;
+  flex: 1 1 auto;
+}
+
+@media (max-width: 768px) {
+  .nowrap-desktop {
+    white-space: normal;
+  }
+
+  .filter-dropdown-col {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .store-filters-col {
+    flex-direction: column;
+    width: 100%;
+    flex: 1 1 100%;
+  }
+}
+
 :root {
   /* Colors - Primary */
   --color-primary-white: #FFFFFF;
@@ -87,7 +122,7 @@ html {
 .tc-h5 {
   font-family: var(--font-tc-primary);
   font-weight: 300;
-  font-size: clamp(16px, 1.8vw, 20px);
+  font-size: 20px;
   line-height: 1.5;
   margin: 0;
 }
@@ -385,8 +420,8 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="number"]
   .gap-mobile-24 { gap: 24px !important; }
   
   /* Tablet Padding */
-  .container { padding: 0 var(--padding-x) !important; }
-  .p-mobile { padding: 24px var(--padding-x) !important; }
+  .container { padding-left: var(--padding-x) !important; padding-right: var(--padding-x) !important; }
+
 }
 
 @media (max-width: 768px) {
@@ -403,8 +438,8 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="number"]
   .tc-body { font-size: 14px; line-height: 1.6; }
   
   /* Mobile Padding */
-  .container { padding: 0 var(--padding-x) !important; }
-  .p-mobile { padding: 24px var(--padding-x) !important; }
+  .container { padding-left: var(--padding-x) !important; padding-right: var(--padding-x) !important; }
+
 }
 
 /* Card Hover Effects */
@@ -417,11 +452,15 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="number"]
   border-radius: 8px;
 }
 .story-card .img-container {
-  height: 220px;
+  position: relative;
+  padding-top: 75%;
   overflow: hidden;
   margin-bottom: 24px;
 }
 .story-card .img-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 100%;
   background-size: cover;
@@ -659,6 +698,7 @@ input[type="range"].custom-slider::-moz-range-thumb {
   opacity: 0;
   pointer-events: none;
 }
+
 .mobile-filter-panel.open {
   transform: translateY(0);
   opacity: 1;

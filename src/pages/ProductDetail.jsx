@@ -393,7 +393,7 @@ const ProductDetail = () => {
         </div>
 
         {/* Right: Product Info */}
-        <div className="p-mobile" style={{ padding: '8vw var(--padding-x)' }}>
+        <div style={{ padding: '8vw var(--padding-x)' }}>
           <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '16px', letterSpacing: '0.1em' }}>{product.category || product.cat}</p>
           <h1 className="tc-h1" style={{ marginBottom: '20px', color: 'var(--color-g100)' }}>{product.name}</h1>
           

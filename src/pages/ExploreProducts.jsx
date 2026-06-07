@@ -14,6 +14,7 @@ const ExploreProducts = () => {
   const [isShapeDropdownOpen, setIsShapeDropdownOpen] = useState(false);
 
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+  const [isMobileShapeDropdownOpen, setIsMobileShapeDropdownOpen] = useState(false);
   const [isBarHidden, setIsBarHidden] = useState(false);
   const footerSentinelRef = useRef(null);
 
@@ -71,39 +72,54 @@ const ExploreProducts = () => {
     }
   };
 
-  const renderFilters = () => (
-    <div className="filter-controls" style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', flex: '1', minWidth: 0 }}>
+  const renderFilters = (isMobilePanel = false) => (
+    <div className="store-filters-col">
       
       {/* Category Dropdown */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: '1 1 200px', maxWidth: '300px' }}>
-        <span className="tc-body" style={{ color: 'var(--color-g60)', flexShrink: 0 }}>系列：</span>
-        <select 
-          value={selectedCategory} 
-          onChange={(e) => setSelectedCategory(e.target.value)}
-          style={{ width: '100%', padding: '8px 16px', borderRadius: '4px', border: '1px solid var(--color-g30)', fontFamily: 'var(--font-tc-body)', color: 'var(--color-g100)', outline: 'none', fontSize: '15px', backgroundColor: 'var(--color-primary-white)', cursor: 'pointer', appearance: 'none', background: 'url("data:image/svg+xml;utf8,<svg fill=\'black\' height=\'24\' viewBox=\'0 0 24 24\' width=\'24\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M7 10l5 5 5-5z\'/><path d=\'M0 0h24v24H0z\' fill=\'none\'/></svg>") no-repeat right 8px center', backgroundSize: '20px' }}
-        >
-          {categories.map(cat => (
-            <option key={cat} value={cat}>{cat === 'ALL' ? '所有系列' : cat}</option>
-          ))}
-        </select>
-      </div>
+      <select 
+        value={selectedCategory} 
+        onChange={(e) => setSelectedCategory(e.target.value)}
+        style={{ 
+          padding: '8px 32px 8px 16px', 
+          borderRadius: '4px', 
+          border: '1px solid var(--color-g40)', 
+          fontFamily: 'var(--font-tc-body)', 
+          fontWeight: 400,
+          color: 'var(--color-g100)', 
+          outline: 'none', 
+          fontSize: '15px', 
+          backgroundColor: 'var(--color-primary-white)', 
+          cursor: 'pointer', 
+          appearance: 'none', 
+          backgroundImage: 'url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23333333%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E")',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'right 16px center',
+          boxSizing: 'border-box',
+          flex: 1,
+          minWidth: 0
+        }}
+      >
+        {categories.map(cat => (
+          <option key={cat} value={cat}>{cat === 'ALL' ? '所有系列' : cat}</option>
+        ))}
+      </select>
 
       {/* Shape Multi-Select Dropdown */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flex: '1 1 200px', maxWidth: '300px' }}>
-        <span className="tc-body" style={{ color: 'var(--color-g60)', flexShrink: 0 }}>框型：</span>
-        <div style={{ position: 'relative', width: '100%' }}>
-          <div 
-            onClick={() => setIsShapeDropdownOpen(!isShapeDropdownOpen)}
-            style={{ width: '100%', boxSizing: 'border-box', padding: '8px 16px', borderRadius: '4px', border: '1px solid var(--color-g30)', fontFamily: 'var(--font-tc-body)', color: 'var(--color-g100)', fontSize: '15px', backgroundColor: 'var(--color-primary-white)', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
-          >
+      <div style={{ position: 'relative', flex: 1, minWidth: 0 }}>
+        <div 
+          onClick={() => isMobilePanel ? setIsMobileShapeDropdownOpen(!isMobileShapeDropdownOpen) : setIsShapeDropdownOpen(!isShapeDropdownOpen)}
+          style={{ width: '100%', boxSizing: 'border-box', padding: '8px 16px', borderRadius: '4px', border: '1px solid var(--color-g40)', fontFamily: 'var(--font-tc-body)', fontWeight: 400, color: 'var(--color-g100)', fontSize: '15px', backgroundColor: 'var(--color-primary-white)', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+        >
             <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
               {selectedShapes.length === 0 ? '不限款式' : selectedShapes.join(', ')}
             </span>
-            <svg fill='var(--color-g100)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg' style={{ flexShrink: 0 }}><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#333333" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
           </div>
 
-          {isShapeDropdownOpen && (
-            <div style={{ position: 'absolute', top: '100%', left: 0, right: 0, boxSizing: 'border-box', backgroundColor: 'var(--color-primary-white)', border: '1px solid var(--color-g30)', borderRadius: '4px', marginTop: '4px', zIndex: 20, boxShadow: '0 4px 12px rgba(0,0,0,0.1)', padding: '8px 0', display: 'flex', flexDirection: 'column' }}>
+          {(isMobilePanel ? isMobileShapeDropdownOpen : isShapeDropdownOpen) && (
+            <div style={{ position: 'absolute', ...(isMobilePanel ? { bottom: '100%', marginBottom: '4px' } : { top: '100%', marginTop: '4px' }), left: 0, right: 0, boxSizing: 'border-box', backgroundColor: 'var(--color-primary-white)', border: '1px solid var(--color-g40)', borderRadius: '4px', zIndex: 20, boxShadow: '0 4px 12px rgba(0,0,0,0.1)', padding: '8px 0', display: 'flex', flexDirection: 'column' }}>
               {shapes.map(shape => (
                 <label key={shape} style={{ display: 'flex', alignItems: 'center', padding: '8px 16px', cursor: 'pointer', transition: 'background-color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'var(--color-g10)'} onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'transparent'}>
                   <input 
@@ -118,7 +134,6 @@ const ExploreProducts = () => {
             </div>
           )}
         </div>
-      </div>
     </div>
   );
 
@@ -157,7 +172,7 @@ const ExploreProducts = () => {
       <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', padding: '0 var(--padding-x)', paddingBottom: '120px' }}>
         
         {/* Desktop Filter Bar */}
-        <div className="desktop-only" style={{ padding: '24px 0', display: 'flex', alignItems: 'center' }}>
+        <div style={{ padding: '24px 0', display: 'flex', alignItems: 'center' }}>
           {renderFilters()}
         </div>
 
@@ -191,9 +206,9 @@ const ExploreProducts = () => {
       <div className={`mobile-filter-panel ${isMobileFilterOpen && !isBarHidden ? 'open' : ''}`}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
           <h3 style={{ margin: 0, fontSize: '18px', fontWeight: 500, color: 'var(--color-g100)' }}>快速篩選</h3>
-          <button onClick={() => { setSelectedCategory('ALL'); setSelectedShapes([]); }} className="tc-caption" style={{ color: 'var(--color-g60)', textDecoration: 'underline' }}>重設</button>
+          <button onClick={() => { setSelectedCategory('ALL'); setSelectedShapes([]); }} className="tc-body" style={{ color: 'var(--color-g80)', textDecoration: 'underline', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>重設</button>
         </div>
-        {renderFilters()}
+        {renderFilters(true)}
       </div>
 
       <div ref={footerSentinelRef} style={{ height: '1px', width: '100%' }} />

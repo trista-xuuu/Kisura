@@ -7,9 +7,9 @@ const Footer = () => {
   const categories = Array.from(new Set(allProducts.map(p => p.cat)));
 
   return (
-    <footer className="p-mobile" style={{ 
+    <footer style={{ 
       backgroundColor: 'var(--color-g10)', 
-      padding: '64px 5vw 28px',
+      padding: '64px var(--padding-x) 28px',
       color: 'var(--color-g100)'
     }}>
       <div className="container" style={{ padding: 0 }}>
