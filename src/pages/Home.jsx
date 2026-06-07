@@ -51,7 +51,7 @@ const Home = () => {
       <div style={{ padding: 'var(--spacing-section-y) var(--padding-x) 0 var(--padding-x)', backgroundColor: 'var(--color-primary-white)' }}>
         <div className="explore-header-mobile" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '36px', flexWrap: 'wrap', gap: '20px' }}>
           <h2 className="tc-h2" style={{ color: 'var(--color-g100)', margin: 0 }}>探索全新產品</h2>
-          <Link to="/products" className="btn-outline">所有產品</Link>
+          <Link to="/explore" className="btn-outline">所有產品</Link>
         </div>
         
         <Swiper
@@ -124,7 +124,7 @@ const Home = () => {
            ))}
         </div>
         <div style={{ textAlign: 'center', marginTop: '36px' }}>
-          <Link to="/products" className="btn-outline">所有產品</Link>
+          <Link to="/explore" className="btn-outline">所有產品</Link>
         </div>
       </div>
 
