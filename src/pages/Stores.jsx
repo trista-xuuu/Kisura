@@ -123,6 +123,7 @@ const Stores = () => {
           value={selectedCity} 
           onChange={(e) => setSelectedCity(e.target.value)}
           style={{ 
+            height: '44px',
             padding: '8px 32px 8px 16px', 
             borderRadius: '4px',
             border: '1px solid var(--color-g40)', 
@@ -151,6 +152,7 @@ const Stores = () => {
           value={selectedModel} 
           onChange={(e) => setSelectedModel(e.target.value)}
           style={{ 
+            height: '44px',
             padding: '8px 32px 8px 16px', 
             borderRadius: '4px',
             border: '1px solid var(--color-g40)', 
@@ -182,7 +184,7 @@ const Stores = () => {
           onClick={handleFindNearby}
           disabled={isLocating}
           className={nearbyOnly ? "btn-primary" : "btn-outline"}
-          style={{ padding: '8px 16px', fontSize: '14px', opacity: isLocating ? 0.7 : 1, transition: 'all 0.3s ease', display: 'inline-flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}
+          style={{ height: '44px', padding: '0 16px', fontSize: '14px', opacity: isLocating ? 0.7 : 1, transition: 'all 0.3s ease', display: 'inline-flex', alignItems: 'center', gap: '6px', justifyContent: 'center', boxSizing: 'border-box' }}
         >
           {isLocating ? <><MapPin size={16} /> 定位中...</> : nearbyOnly ? <><X size={16} /> 關閉附近尋找</> : <><MapPin size={16} /> 離我最近的店家</>}
         </button>

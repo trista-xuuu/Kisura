@@ -80,6 +80,7 @@ const ExploreProducts = () => {
         value={selectedCategory} 
         onChange={(e) => setSelectedCategory(e.target.value)}
         style={{ 
+          height: '44px',
           padding: '8px 32px 8px 16px', 
           borderRadius: '4px', 
           border: '1px solid var(--color-g40)', 
@@ -108,7 +109,7 @@ const ExploreProducts = () => {
       <div style={{ position: 'relative', flex: 1, minWidth: 0 }}>
         <div 
           onClick={() => isMobilePanel ? setIsMobileShapeDropdownOpen(!isMobileShapeDropdownOpen) : setIsShapeDropdownOpen(!isShapeDropdownOpen)}
-          style={{ width: '100%', boxSizing: 'border-box', padding: '8px 16px', borderRadius: '4px', border: '1px solid var(--color-g40)', fontFamily: 'var(--font-tc-body)', fontWeight: 400, color: 'var(--color-g100)', fontSize: '15px', backgroundColor: 'var(--color-primary-white)', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+          style={{ height: '44px', width: '100%', boxSizing: 'border-box', padding: '0 16px', borderRadius: '4px', border: '1px solid var(--color-g40)', fontFamily: 'var(--font-tc-body)', fontWeight: 400, color: 'var(--color-g100)', fontSize: '15px', backgroundColor: 'var(--color-primary-white)', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
         >
             <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
               {selectedShapes.length === 0 ? '不限款式' : selectedShapes.join(', ')}
