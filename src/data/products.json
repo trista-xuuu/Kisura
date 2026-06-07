@@ -42,7 +42,9 @@
         "pitch": "極具存在感的經典黑粗框，百搭不挑膚色，瞬間提升個性立體感。"
       }
     ],
-    "frameWidthMM": 140
+    "frameWidthMM": 140,
+    "gender": "men",
+    "shape": "圓框"
   },
   {
     "id": "N401",
@@ -87,7 +89,9 @@
         "pitch": "黑色圓框結合金屬細節，對比鮮明且修飾稜角，不挑膚色的百搭單品。"
       }
     ],
-    "frameWidthMM": 140
+    "frameWidthMM": 140,
+    "gender": "men",
+    "shape": "圓框"
   },
   {
     "id": "5014",
@@ -111,7 +115,9 @@
         "pitch": "百搭的經典粗框，以簡約線條勾勒出臉部立體感，不挑膚色的完美選擇。"
       }
     ],
-    "frameWidthMM": 140
+    "frameWidthMM": 140,
+    "gender": "men",
+    "shape": "方框"
   },
   {
     "id": "5015",
@@ -133,7 +139,9 @@
         "pitch": "輕盈透明感灰框設計，大幅減輕面部重量，打造清新知性的都會風格。"
       }
     ],
-    "frameWidthMM": 140
+    "frameWidthMM": 140,
+    "gender": "men",
+    "shape": "方框"
   },
   {
     "id": "N402",
@@ -156,7 +164,9 @@
         "pitch": "充滿細節的復古圓框，溫暖的玳瑁色澤，為肌膚注入自然好氣色。"
       }
     ],
-    "frameWidthMM": 140
+    "frameWidthMM": 140,
+    "gender": "women",
+    "shape": "圓框"
   },
   {
     "id": "N403",
@@ -178,7 +188,9 @@
         "pitch": "深邃的藍琥珀色調在光線下若隱若現，圓潤邊框設計展現獨特藝術氣息。"
       }
     ],
-    "frameWidthMM": 140
+    "frameWidthMM": 140,
+    "gender": "women",
+    "shape": "圓框"
   },
   {
     "id": "23883",
@@ -213,7 +225,9 @@
         "pitch": "經典黑色鈦金屬圓框，輕盈無負擔地柔化臉部線條，適合所有膚色。"
       }
     ],
-    "frameWidthMM": 140
+    "frameWidthMM": 140,
+    "gender": "women",
+    "shape": "圓框"
   },
   {
     "id": "5006",
@@ -260,7 +274,9 @@
         "pitch": "極簡的黑色羽毛鈦圓框，輕盈修飾下巴線條，任何膚色皆能輕鬆駕馭。"
       }
     ],
-    "frameWidthMM": 140
+    "frameWidthMM": 140,
+    "gender": "women",
+    "shape": "圓框"
   },
   {
     "id": "23884",
@@ -283,7 +299,9 @@
         "pitch": "超輕量鈦金屬結構，點綴玳瑁紋理，打造無與倫比的舒適配戴體驗。"
       }
     ],
-    "frameWidthMM": 140
+    "frameWidthMM": 140,
+    "gender": "unisex",
+    "shape": "波士頓框"
   },
   {
     "id": "23885",
@@ -307,7 +325,9 @@
         "pitch": "幾近無形的純黑鈦金屬細框，完美隱形於面部輪廓中，展現極簡魅力。"
       }
     ],
-    "frameWidthMM": 140
+    "frameWidthMM": 140,
+    "gender": "unisex",
+    "shape": "方框"
   },
   {
     "id": "5007",
@@ -330,7 +350,9 @@
         "pitch": "以罕見的抹茶綠鈦金屬打造，不僅輕盈更充滿知性質感，修飾效果極佳。"
       }
     ],
-    "frameWidthMM": 140
+    "frameWidthMM": 140,
+    "gender": "unisex",
+    "shape": "波士頓框"
   },
   {
     "id": "5008",
@@ -353,7 +375,9 @@
         "pitch": "優雅的玳瑁色在極細鈦金屬邊框上延伸，讓復古氣息輕巧不厚重。"
       }
     ],
-    "frameWidthMM": 140
+    "frameWidthMM": 140,
+    "gender": "unisex",
+    "shape": "圓框"
   },
   {
     "id": "OTW6021",
@@ -398,6 +422,8 @@
         "pitch": "獨特透藍光澤在光線折射下盡顯職人巧思，為任何膚色帶來清新脫俗的視覺亮點。"
       }
     ],
-    "frameWidthMM": 140
+    "frameWidthMM": 140,
+    "gender": "unisex",
+    "shape": "方框"
   }
 ]

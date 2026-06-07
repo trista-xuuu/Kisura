@@ -1,9 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import * as faceapi from '@vladmandic/face-api';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 import allProducts from '../data/products.json';
 import { X, Camera, Sparkle, Lightbulb, ArrowLeft } from '@phosphor-icons/react';
 import ProductCard from '../components/ProductCard';
+
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -87,13 +92,13 @@ const ProductDetail = () => {
             
             // Expected center is ~50% X, ~40% Y (because oval is top 15%, height 50%)
             const isCenteredX = Math.abs(faceCenterX - 0.5) < 0.2;
-            const isCenteredY = Math.abs(faceCenterY - 0.4) < 0.2;
+            const isCenteredY = Math.abs(faceCenterY - 0.5) < 0.2;
             
             if (!isCenteredX || !isCenteredY) {
               setAlignStatus('not_centered');
-            } else if (faceArea < 0.05) {
+            } else if (faceArea < 0.10) {
               setAlignStatus('too_far');
-            } else if (faceArea > 0.35) {
+            } else if (faceArea > 0.30) {
               setAlignStatus('too_close');
             } else {
               setAlignStatus('perfect');
@@ -114,7 +119,7 @@ const ProductDetail = () => {
   }, [isCameraOpen, modelsLoaded]);
 
   if (!product) {
-    return <div style={{ padding: '100px', textAlign: 'center' }}>找不到該商品。 <Link to="/products">回到列表</Link></div>;
+    return <div style={{ padding: 'var(--spacing-section-y)', textAlign: 'center' }}>找不到該商品。 <Link to="/products">回到列表</Link></div>;
   }
 
   const activeColor = product.colors.find(c => c.id === activeColorId) || product.colors[0];
@@ -327,7 +332,7 @@ const ProductDetail = () => {
     link.click();
   };
 
-  const handleShareCustom = async (platform) => {
+  const handleShareCustom = async () => {
     const canvas = await generatePolaroidCanvas();
     if (!canvas) return;
     
@@ -349,7 +354,7 @@ const ProductDetail = () => {
       }, 'image/png');
     } else {
       // Desktop or unsupported fallback -> download & prompt
-      alert(`電腦版瀏覽器不支援直接發布到社群。已為您下載試戴美照！快傳送到手機分享至 ${platform} 吧 ✨`);
+      alert(`電腦版瀏覽器不支援直接發布到社群。已為您下載試戴美照！快傳送到手機分享吧 ✨`);
       const link = document.createElement('a');
       link.download = `kisura_${product.name}_tryon.png`;
       link.href = canvas.toDataURL('image/png');
@@ -359,10 +364,22 @@ const ProductDetail = () => {
 
   const relatedProducts = allProducts.filter(p => p.cat === product.cat && p.id !== product.id).slice(0, 3);
 
+  const [isBarHidden, setIsBarHidden] = useState(false);
+  const footerSentinelRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsBarHidden(entry.isIntersecting),
+      { threshold: 0 }
+    );
+    if (footerSentinelRef.current) observer.observe(footerSentinelRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div style={{ backgroundColor: 'var(--color-primary-white)', position: 'relative' }}>
-      <button onClick={() => navigate('/products?category=' + encodeURIComponent(product.cat))} style={{ position: 'absolute', top: '24px', right: 'var(--padding-x)', zIndex: 10, display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', fontSize: '14px', color: 'var(--color-g80)', backgroundColor: 'transparent', border: 'none', cursor: 'pointer' }}>
-        <ArrowLeft size={16} /> 返回列表
+    <div className="product-detail-page" style={{ backgroundColor: 'var(--color-primary-white)', position: 'relative' }}>
+      <button onClick={() => navigate('/explore?gender=all')} style={{ position: 'absolute', top: '24px', right: 'var(--padding-x)', zIndex: 10, display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 16px', fontSize: '14px', color: 'var(--color-g80)', backgroundColor: 'transparent', border: 'none', cursor: 'pointer' }}>
+        <ArrowLeft size={16} /> 產品列表
       </button>
       <div className="grid-2" style={{ borderBottom: '1px solid var(--color-g20)' }}>
         
@@ -378,10 +395,10 @@ const ProductDetail = () => {
         {/* Right: Product Info */}
         <div className="p-mobile" style={{ padding: '8vw var(--padding-x)' }}>
           <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '16px', letterSpacing: '0.1em' }}>{product.category || product.cat}</p>
-          <h1 className="tc-h1" style={{ marginBottom: '24px', color: 'var(--color-g100)' }}>{product.name}</h1>
+          <h1 className="tc-h1" style={{ marginBottom: '20px', color: 'var(--color-g100)' }}>{product.name}</h1>
           
           {/* Colors & Skin Tone Matcher */}
-          <div style={{ marginBottom: '48px', padding: '24px', backgroundColor: 'var(--color-g10)' }}>
+          <div style={{ marginBottom: '48px', padding: '24px', backgroundColor: 'var(--color-g10)', borderRadius: '8px' }}>
             <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '16px' }}>顏色：{activeColor.name}</p>
             <div style={{ display: 'flex', gap: '16px', marginBottom: '24px' }}>
               {product.colors.map(color => (
@@ -389,7 +406,7 @@ const ProductDetail = () => {
                   key={color.id}
                   onClick={() => setActiveColorId(color.id)}
                   style={{ 
-                    width: '32px', height: '32px', borderRadius: '50%', 
+                    width: '32px', height: '32px', borderRadius: '8px', 
                     backgroundColor: color.hex,
                     border: activeColorId === color.id ? '2px solid var(--color-g100)' : '1px solid var(--color-g40)',
                     outline: activeColorId === color.id ? '2px solid var(--color-primary-white)' : 'none',
@@ -413,7 +430,7 @@ const ProductDetail = () => {
                       padding: '4px 12px', fontSize: '12px',
                       backgroundColor: activeSkinTone === tone.id ? 'var(--color-g100)' : 'transparent',
                       color: activeSkinTone === tone.id ? 'var(--color-primary-white)' : 'var(--color-g80)',
-                      border: '1px solid var(--color-g40)', transition: 'all 0.2s'
+                      border: '1px solid var(--color-g40)', transition: 'all 0.2s', borderRadius: '8px'
                     }}>
                     {tone.name}
                   </button>
@@ -427,20 +444,24 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '48px', maxWidth: '500px', lineHeight: '1.8' }}>
+          <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '28px', maxWidth: '500px', lineHeight: '1.8' }}>
             {activeColor.pitch}
           </p>
           
-          <div style={{ display: 'flex', gap: '16px', marginBottom: '60px' }}>
-            <Link to={`/stores?model=${product.id}`} className="btn-primary" style={{ flex: 1, textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>哪裡購買</Link>
-            <button className="btn-outline" style={{ flex: 1 }} onClick={() => setIsTryOnOpen(true)}>線上試戴</button>
+          <div className={`product-mobile-actions ${isBarHidden ? 'hidden' : ''}`} style={{ display: 'flex', gap: '16px', marginBottom: '60px' }}>
+            <div className="mobile-title-row" style={{ display: 'none' }}>
+              {product.cat} | {product.name}
+            </div>
+            <div className="action-buttons-row" style={{ display: 'flex', gap: '16px', flex: 1 }}>
+              <Link to={`/stores?model=${product.id}`} className="btn-primary" style={{ flex: 1, textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>哪裡購買</Link>
+              <button className="btn-outline" style={{ flex: 1 }} onClick={() => setIsTryOnOpen(true)}>線上試戴</button>
+            </div>
           </div>
 
           <div style={{ borderTop: '1px solid var(--color-g20)', paddingTop: '32px' }}>
-             <h3 className="tc-h5" style={{ color: 'var(--color-g100)', marginBottom: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-               商品規格
-               <span className="tc-caption" style={{ color: 'var(--color-g60)', cursor: 'help', borderBottom: '1px dashed var(--color-g60)' }} title="52: 鏡片寬度 / 18: 鼻距 / 145: 鏡腳長度">尺寸指南？</span>
-             </h3>
+              <h3 className="tc-h5" style={{ color: 'var(--color-g100)', marginBottom: '24px' }}>
+                商品規格
+              </h3>
              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }} className="tc-body">
                <li style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid var(--color-g10)', paddingBottom: '12px', marginBottom: '12px', color: 'var(--color-g80)' }}>
                  <span>材質</span><span>純鈦、醋酸纖維</span>
@@ -459,12 +480,30 @@ const ProductDetail = () => {
 
       {/* You Might Also Like */}
       {relatedProducts.length > 0 && (
-        <div style={{ padding: '80px var(--padding-x)', backgroundColor: 'var(--color-g10)' }}>
-          <h2 className="tc-h2" style={{ textAlign: 'center', marginBottom: '48px', color: 'var(--color-g100)' }}>您可能也會喜歡</h2>
-          <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px' }}>
-            {relatedProducts.map(prod => (
-              <ProductCard key={prod.id} product={prod} />
-            ))}
+        <div style={{ padding: '80px 0 40px 0', backgroundColor: 'var(--color-g10)' }}>
+          <h2 className="tc-h2" style={{ textAlign: 'center', marginBottom: '20px', color: 'var(--color-g100)' }}>您可能也會喜歡</h2>
+          <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 var(--padding-x)' }}>
+            <Swiper
+              modules={[Navigation]}
+              navigation
+              spaceBetween={8}
+              slidesPerView={'auto'}
+              centeredSlides={true}
+              className="product-swiper"
+              breakpoints={{
+                768: { slidesPerView: 3, centeredSlides: false }
+              }}
+              style={{ paddingBottom: '20px' }}
+            >
+              {relatedProducts.map(prod => (
+                <SwiperSlide key={prod.id}>
+                  <ProductCard product={prod} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <style>{`
+              .swiper-button-next, .swiper-button-prev { color: var(--color-g100); }
+            `}</style>
           </div>
         </div>
       )}
@@ -472,60 +511,30 @@ const ProductDetail = () => {
       {/* 2D Try-On Modal */}
       {isTryOnOpen && (
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.9)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <div style={{ backgroundColor: 'var(--color-primary-white)', width: '90%', maxWidth: '1000px', height: '90vh', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+          <div className="modal-container">
             
-            <div style={{ padding: '24px', borderBottom: '1px solid var(--color-g20)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <h2 className="tc-h2">相片模擬試戴</h2>
-              <button onClick={() => setIsTryOnOpen(false)} style={{ fontSize: '24px', color: 'var(--color-g80)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex' }}><X size={24} /></button>
+            <div style={{ padding: '16px 24px', borderBottom: '1px solid var(--color-g20)', display: 'flex', position: 'relative', justifyContent: 'center', alignItems: 'center' }}>
+              <h2 className="tc-h5" style={{ color: 'var(--color-g100)', margin: 0 }}>相片模擬試戴</h2>
+              <button onClick={() => { setIsTryOnOpen(false); setUserPhoto(null); }} style={{ position: 'absolute', right: '24px', fontSize: '24px', color: 'var(--color-g80)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex' }}><X size={24} /></button>
             </div>
 
-            <div className="flex-col-mobile" style={{ display: 'flex', flex: 1, overflowY: 'auto', overflowX: 'hidden' }}>
+            <div className="flex-col-mobile" style={{ display: 'flex', flex: 1, minHeight: 0, overflowY: userPhoto ? 'auto' : 'hidden', overflowX: 'hidden', position: 'relative' }}>
               
-              <div style={{ flex: 2, minHeight: '50vh', backgroundColor: 'var(--color-g10)', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-                {!userPhoto && !isCameraOpen ? (
+              <div className={`vto-photo-container ${userPhoto ? 'has-photo' : ''}`} style={{ 
+                flex: userPhoto ? 2 : 1, 
+                width: '100%', 
+                position: userPhoto ? 'relative' : 'absolute',
+                top: userPhoto ? 'auto' : 0,
+                left: userPhoto ? 'auto' : 0,
+                right: userPhoto ? 'auto' : 0,
+                bottom: userPhoto ? 'auto' : 0,
+                backgroundColor: 'var(--color-g10)', 
+                display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' 
+              }}>
+                {!userPhoto ? (
                   <div style={{ textAlign: 'center' }}>
                     <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '24px' }}>請點擊下方按鈕啟動相機<br/>(我們不會儲存您的相片)</p>
                     <button className="btn-primary" onClick={openCamera} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}><Camera size={18} /> 啟動相機</button>
-                  </div>
-                ) : isCameraOpen ? (
-                  <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: '#000' }}>
-                    <video ref={videoRef} autoPlay playsInline style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', transform: 'scaleX(-1)' }} />
-                    
-                    {/* Overlay Guide */}
-                    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, pointerEvents: 'none' }}>
-                      {/* 臉部輪廓橢圓與十字線 */}
-                      <div style={{ 
-                        position: 'absolute', top: '15%', left: '50%', transform: 'translateX(-50%)', 
-                        width: '35%', height: '50%', borderRadius: '50%',
-                        border: alignStatus === 'perfect' ? '3px solid #4CAF50' : '2px dashed rgba(255, 255, 255, 0.8)',
-                        animation: alignStatus !== 'perfect' && alignStatus !== 'detecting' ? 'flashWarning 1s infinite' : 'none',
-                        transition: 'all 0.3s ease'
-                      }}>
-                        {/* 十字線 */}
-                        <div style={{ position: 'absolute', top: 0, bottom: 0, left: '50%', borderLeft: alignStatus === 'perfect' ? '1px solid rgba(76, 175, 80, 0.5)' : '1px dashed rgba(255,255,255,0.4)', transition: 'all 0.3s ease' }}></div>
-                        <div style={{ position: 'absolute', top: '45%', left: 0, right: 0, borderTop: alignStatus === 'perfect' ? '1px solid rgba(76, 175, 80, 0.5)' : '1px dashed rgba(255,255,255,0.4)', transition: 'all 0.3s ease' }}></div>
-                      </div>
-                      
-                      {/* 提示文字 */}
-                      <div style={{ position: 'absolute', top: '58%', left: 0, right: 0, textAlign: 'center' }}>
-                        <span style={{ 
-                          backgroundColor: alignStatus === 'perfect' ? 'rgba(76, 175, 80, 0.9)' : 'rgba(0,0,0,0.5)', 
-                          color: '#FFF', padding: '8px 20px', fontSize: '15px', letterSpacing: '0.05em', fontWeight: 'bold',
-                          animation: alignStatus !== 'perfect' && alignStatus !== 'detecting' ? 'flashWarning 1s infinite' : 'none',
-                        }}>
-                          {alignStatus === 'detecting' && '臉部定位中...'}
-                          {alignStatus === 'not_centered' && '請將臉部對準虛線框'}
-                          {alignStatus === 'too_far' && '請再靠近鏡頭一點'}
-                          {alignStatus === 'too_close' && '請稍微遠離鏡頭'}
-                          {alignStatus === 'perfect' && '完美！請保持姿勢按下拍攝'}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div style={{ position: 'absolute', bottom: '40px', display: 'flex', gap: '16px', zIndex: 10 }}>
-                      <button className="btn-primary" onClick={capturePhoto} style={{ padding: '12px 32px' }}>拍攝</button>
-                      <button className="btn-outline" onClick={closeCamera} style={{ padding: '12px 32px', backgroundColor: 'var(--color-primary-white)' }}>取消</button>
-                    </div>
                   </div>
                 ) : (
                   <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -537,8 +546,8 @@ const ProductDetail = () => {
                       </div>
                     )}
                     
-                    <div style={{ position: 'relative', display: 'inline-block', maxWidth: '100%', maxHeight: '100%' }}>
-                      <img src={userPhoto} alt="User" style={{ maxWidth: '100%', maxHeight: '100%', display: 'block' }} />
+                    <div style={{ position: 'relative', display: 'block', width: '100%' }}>
+                      <img src={userPhoto} alt="User" style={{ width: '100%', height: 'auto', display: 'block' }} />
                       
                       {!isDetecting && (
                         <img 
@@ -559,66 +568,105 @@ const ProductDetail = () => {
                 )}
               </div>
 
-              <div style={{ flex: 1, padding: '32px', borderLeft: '1px solid var(--color-g20)', display: 'flex', flexDirection: 'column', gap: '32px', overflowY: 'auto' }}>
-                {userPhoto && (
-                  <>
-                    {/* Add Color Picker inside Modal */}
-                    <div>
-                      <p className="tc-body" style={{ marginBottom: '16px' }}>試戴顏色：{activeColor.name}</p>
-                      <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-                        {product.colors.map(color => (
-                          <button 
-                            key={color.id}
-                            onClick={() => setActiveColorId(color.id)}
-                            style={{ 
-                              width: '32px', height: '32px', borderRadius: '50%', 
-                              backgroundColor: color.hex,
-                              border: activeColorId === color.id ? '2px solid var(--color-g100)' : '1px solid var(--color-g40)',
-                              outline: activeColorId === color.id ? '2px solid var(--color-primary-white)' : 'none',
-                              outlineOffset: '-4px'
-                            }}
-                            title={color.name}
-                            aria-label={color.name}
-                          />
-                        ))}
-                      </div>
-                    </div>
-
-                    <div style={{ borderTop: '1px solid var(--color-g20)', paddingTop: '32px' }}>
-                      <p className="tc-body" style={{ marginBottom: '16px' }}>1. 調整大小</p>
-                      <input type="range" min="0.5" max="2" step="0.01" value={gScale} onChange={(e) => setGScale(parseFloat(e.target.value))} style={{ width: '100%' }} />
-                    </div>
-                    <div>
-                      <p className="tc-body" style={{ marginBottom: '16px' }}>2. 調整上下位置</p>
-                      <input type="range" min="10" max="90" step="1" value={gY} onChange={(e) => setGY(parseFloat(e.target.value))} style={{ width: '100%' }} />
-                    </div>
-                    <div>
-                      <p className="tc-body" style={{ marginBottom: '16px' }}>3. 調整左右位置</p>
-                      <input type="range" min="10" max="90" step="1" value={gX} onChange={(e) => setGX(parseFloat(e.target.value))} style={{ width: '100%' }} />
-                    </div>
-
-                    <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                       <button className="btn-outline" onClick={openCamera} style={{ fontSize: '14px', padding: '12px 0', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}><Camera size={16} /> 重新拍照</button>
-                       <div style={{ display: 'flex', gap: '12px' }}>
-                         <button className="btn-primary" onClick={() => handleShareCustom('Instagram')} style={{ flex: 1, padding: '12px 0', backgroundColor: '#E1306C', border: '1px solid #E1306C' }}>分享至 IG</button>
-                         <button className="btn-primary" onClick={() => handleShareCustom('Facebook')} style={{ flex: 1, padding: '12px 0', backgroundColor: '#1877F2', border: '1px solid #1877F2' }}>分享至 FB</button>
-                       </div>
-                       <button className="btn-primary" onClick={handleDownload} style={{ padding: '12px 0' }}>📥 儲存相片 (9:16)</button>
-                    </div>
-                  </>
-                )}
-                {!userPhoto && (
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-                     <p className="tc-caption" style={{ color: 'var(--color-g80)' }}>請先啟動相機拍照</p>
+              {userPhoto && (
+                <div className="vto-controls-container" style={{ flex: 1, padding: '32px', borderLeft: '1px solid var(--color-g20)', display: 'flex', flexDirection: 'column', gap: '32px', overflowY: 'auto' }}>
+                  {/* Add Color Picker inside Modal */}
+                  <div>
+                    <p className="tc-body" style={{ margin: 0, fontSize: '16px' }}>試戴顏色：{activeColor.name}</p>
                   </div>
-                )}
-              </div>
+
+                  <div style={{ borderTop: '1px solid var(--color-g20)', paddingTop: '32px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                    <div>
+                      <p className="tc-body" style={{ marginBottom: '4px', fontSize: '16px' }}>調整上下位置</p>
+                      <input type="range" className="custom-slider" min="10" max="90" step="1" value={gY} onChange={(e) => setGY(parseFloat(e.target.value))} style={{ background: `linear-gradient(to right, var(--color-accent-earth) ${((gY - 10) / 80) * 100}%, var(--color-g20) ${((gY - 10) / 80) * 100}%)` }} />
+                    </div>
+                    <div>
+                      <p className="tc-body" style={{ marginBottom: '4px', fontSize: '16px' }}>調整左右位置</p>
+                      <input type="range" className="custom-slider" min="10" max="90" step="1" value={gX} onChange={(e) => setGX(parseFloat(e.target.value))} style={{ background: `linear-gradient(to right, var(--color-accent-earth) ${((gX - 10) / 80) * 100}%, var(--color-g20) ${((gX - 10) / 80) * 100}%)` }} />
+                    </div>
+                  </div>
+
+                  <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                     <button className="btn-outline" onClick={openCamera} style={{ padding: '12px 0', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}><Camera size={20} /> 重新拍照</button>
+                     <button className="btn-primary" onClick={handleShareCustom} style={{ padding: '12px 0', backgroundColor: '#333', border: '1px solid #333' }}>分享至社群</button>
+                     <button className="btn-primary" onClick={handleDownload} style={{ padding: '12px 0' }}>📥 儲存相片 (9:16)</button>
+                  </div>
+                </div>
+              )}
 
             </div>
           </div>
           <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
         </div>
       )}
+
+      {/* Camera Full-Screen Overlay */}
+      {isCameraOpen && (
+        <div style={{ 
+          position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, 
+          backgroundColor: 'var(--color-g100)', zIndex: 10000, 
+          display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start',
+          overflow: 'auto', padding: '20px 16px'
+        }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', margin: 'auto 0', maxHeight: '100%' }}>
+            <h3 className="tc-h2" style={{ color: 'var(--color-primary-white)', marginBottom: '16px', flexShrink: 0 }}>即時相片擷取</h3>
+            <p className="tc-body" style={{ color: 'var(--color-primary-white)', marginBottom: '20px', display: 'flex', gap: '8px', alignItems: 'flex-start', textAlign: 'left', maxWidth: '90%', width: '400px', flexShrink: 0 }}>
+              <Lightbulb size={24} style={{ flexShrink: 0, marginTop: '4px' }} weight="fill" color="var(--color-accent-earth)" /> 
+              <span>提醒您：請拍攝包含<strong style={{ color: 'var(--color-primary-white)' }}>「胸上」</strong>的<strong style={{ color: 'var(--color-primary-white)' }}>「清晰正面照」</strong>，並確保光線充足，以獲得最精準的推薦結果。</span>
+            </p>
+            
+            <div style={{ position: 'relative', width: '100%', maxWidth: '400px', flex: 1, minHeight: 0, backgroundColor: 'var(--color-g100)', overflow: 'hidden', borderRadius: '8px', flexShrink: 1 }}>
+              <video 
+                ref={videoRef} 
+                autoPlay 
+                playsInline 
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transform: 'scaleX(-1)' }} 
+              />
+              
+              {/* Overlay Guide */}
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, pointerEvents: 'none' }}>
+                {/* 臉部輪廓橢圓與十字線 */}
+                <div style={{ 
+                  position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', 
+                  height: '65%', aspectRatio: '1 / 1.35', borderRadius: '50%',
+                  border: alignStatus === 'perfect' ? '3px solid #4CAF50' : '2px dashed rgba(255, 255, 255, 0.8)',
+                  animation: alignStatus !== 'perfect' && alignStatus !== 'detecting' ? 'flashWarning 1s infinite' : 'none',
+                  transition: 'all 0.3s ease'
+                }}>
+                  {/* 十字線 */}
+                  <div style={{ position: 'absolute', top: 0, bottom: 0, left: '50%', borderLeft: alignStatus === 'perfect' ? '1px solid rgba(76, 175, 80, 0.5)' : '1px dashed rgba(255,255,255,0.4)', transition: 'all 0.3s ease' }}></div>
+                  <div style={{ position: 'absolute', top: '50%', left: 0, right: 0, borderTop: alignStatus === 'perfect' ? '1px solid rgba(76, 175, 80, 0.5)' : '1px dashed rgba(255,255,255,0.4)', transition: 'all 0.3s ease' }}></div>
+                </div>
+                
+                {/* 提示文字 */}
+                <div style={{ position: 'absolute', top: '80%', left: 0, right: 0, textAlign: 'center' }}>
+                  <span style={{ 
+                    backgroundColor: alignStatus === 'perfect' ? 'rgba(76, 175, 80, 0.9)' : 'rgba(52,50,48,0.5)', 
+                    color: 'var(--color-primary-white)', padding: '8px 20px', fontSize: '15px', letterSpacing: '0.05em', fontWeight: 'bold',
+                    animation: alignStatus !== 'perfect' && alignStatus !== 'detecting' ? 'flashWarning 1s infinite' : 'none',
+                    display: 'inline-block',
+                    borderRadius: '24px',
+                    whiteSpace: 'nowrap'
+                  }}>
+                    {alignStatus === 'detecting' && '臉部定位中...'}
+                    {alignStatus === 'not_centered' && '請將臉部對準虛線框'}
+                    {alignStatus === 'too_far' && '請再靠近鏡頭一點'}
+                    {alignStatus === 'too_close' && '請稍微遠離鏡頭'}
+                    {alignStatus === 'perfect' && '完美！請保持姿勢按下拍攝'}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', gap: '24px', marginTop: '24px', flexShrink: 0, paddingBottom: '16px' }}>
+              <button onClick={capturePhoto} style={{ padding: '16px 40px', backgroundColor: 'var(--color-primary-white)', color: 'var(--color-g100)', border: 'none', borderRadius: '4px', fontSize: '16px', fontWeight: '300', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', letterSpacing: '0.05em', fontFamily: 'var(--font-tc-body)' }}><Camera size={24} /> 拍攝</button>
+              <button onClick={closeCamera} style={{ padding: '15px 39px', backgroundColor: 'transparent', color: 'var(--color-primary-white)', border: '1px solid var(--color-primary-white)', borderRadius: '4px', fontSize: '16px', fontWeight: '300', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', letterSpacing: '0.05em', fontFamily: 'var(--font-tc-body)' }}><X size={20} /> 取消</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div ref={footerSentinelRef} style={{ height: '1px', width: '100%' }}></div>
     </div>
   );
 };

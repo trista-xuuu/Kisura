@@ -33,14 +33,14 @@ const StoryList = () => {
   }
 
   return (
-    <div style={{ backgroundColor: 'var(--color-g10)', paddingBottom: '120px', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: 'var(--color-g10)', paddingBottom: '80px' }}>
       <div style={{ padding: '80px var(--padding-x)', textAlign: 'center', backgroundColor: 'var(--color-g10)' }}>
         <p className="en-caption" style={{ color: 'var(--color-g80)', marginBottom: '16px', letterSpacing: '0.2em' }}>OUR STORIES</p>
-        <h1 className="tc-h1" style={{ color: 'var(--color-g100)', marginBottom: '16px' }}>探索故事</h1>
+        <h1 className="tc-h1" style={{ color: 'var(--color-g100)', marginBottom: '20px' }}>探索故事</h1>
       </div>
 
       {/* Filter Tabs */}
-      <div className="gap-mobile-16" style={{ display: 'flex', justifyContent: 'center', gap: '40px', padding: '40px 0', borderBottom: '1px solid var(--color-g20)', flexWrap: 'wrap', marginBottom: '60px', backgroundColor: 'var(--color-primary-white)' }}>
+      <div className="gap-mobile-16 category-bar" style={{ display: 'flex', justifyContent: 'center', gap: '40px', padding: '40px 0', borderBottom: '1px solid var(--color-g20)', flexWrap: 'wrap', backgroundColor: 'var(--color-primary-white)', marginBottom: '16px' }}>
         {tabs.map(tab => (
           <button 
             key={tab}
@@ -64,7 +64,7 @@ const StoryList = () => {
       {/* Active Tag Indicator */}
       {activeTag && (
         <div className="container" style={{ padding: '0 var(--padding-x)', marginBottom: '40px', textAlign: 'center' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', backgroundColor: 'var(--color-g10)', padding: '8px 16px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', backgroundColor: 'var(--color-g10)', padding: '8px 16px', borderRadius: '8px' }}>
             <span className="tc-body" style={{ color: 'var(--color-g80)', marginRight: '12px' }}>目前正在瀏覽標籤：<strong style={{ color: 'var(--color-accent-earth)' }}>{activeTag}</strong></span>
             <button 
               onClick={() => navigate('/stories')}
@@ -77,8 +77,8 @@ const StoryList = () => {
       )}
 
       {/* Story Grid */}
-      <div className="container" style={{ padding: '0 var(--padding-x)' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', borderTop: '1px solid var(--color-g20)', borderLeft: '1px solid var(--color-g20)' }}>
+      <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', padding: '0 var(--padding-x)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '8px' }}>
           {filteredStories.map(story => (
             <Link to={`/stories/${story.id}`} key={story.id} className="story-card">
               <div className="img-container">

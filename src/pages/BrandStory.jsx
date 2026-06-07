@@ -2,7 +2,7 @@ import React from 'react';
 
 const BrandStory = () => {
   return (
-    <div style={{ backgroundColor: 'var(--color-primary-white)', paddingBottom: '100px' }}>
+    <div style={{ backgroundColor: 'var(--color-primary-white)', paddingBottom: 'var(--spacing-section-y)' }}>
       
       {/* Full Width Hero */}
       <div style={{ width: '100%', height: 'calc(100dvh - 70px)', backgroundImage: 'url(/brand_story/brand_1.png)', backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }}>
@@ -14,9 +14,9 @@ const BrandStory = () => {
       </div>
 
       {/* Philosophy Section */}
-      <div className="container" style={{ maxWidth: '800px', margin: '0 auto', paddingTop: '100px', paddingBottom: '100px', textAlign: 'center' }}>
-        <p className="en-caption" style={{ color: 'var(--color-g80)', marginBottom: '32px' }}>OUR PHILOSOPHY</p>
-        <h2 className="tc-h2" style={{ color: 'var(--color-g100)', marginBottom: '40px', lineHeight: '1.6' }}>
+      <div className="container" style={{ maxWidth: '800px', margin: '0 auto', paddingTop: 'var(--spacing-section-y)', paddingBottom: 'var(--spacing-section-y)', textAlign: 'center' }}>
+        <p className="en-caption" style={{ color: 'var(--color-g80)', marginBottom: '16px' }}>OUR PHILOSOPHY</p>
+        <h2 className="tc-h2" style={{ color: 'var(--color-g100)', marginBottom: '20px', lineHeight: '1.6' }}>
           成為每一位堅持的人，最信任的選擇
         </h2>
         <p className="tc-body" style={{ color: 'var(--color-g80)', fontSize: '16px', lineHeight: '2' }}>
@@ -25,13 +25,13 @@ const BrandStory = () => {
       </div>
 
       {/* Grid Images */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px', backgroundColor: 'var(--color-g20)', marginBottom: '100px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px', backgroundColor: 'var(--color-g20)', marginBottom: 'var(--spacing-section-y)' }}>
          <img src="/brand_story/brand_3.png" style={{ width: '100%', height: '60vh', objectFit: 'cover' }} />
          <img src="/brand_story/brand_2.png" style={{ width: '100%', height: '60vh', objectFit: 'cover' }} />
       </div>
 
       <div className="container" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-         <h2 className="tc-h2" style={{ color: 'var(--color-g100)', marginBottom: '32px' }}>堅持的信念，給予堅持的人，完成堅持的事</h2>
+         <h2 className="tc-h2" style={{ color: 'var(--color-g100)', marginBottom: '20px' }}>堅持的信念，給予堅持的人，完成堅持的事</h2>
          <p className="tc-body" style={{ color: 'var(--color-g80)', fontSize: '16px', lineHeight: '2' }}>
            KISURA 專注於極輕、抗敏的純鈦工藝。我們不盲目追求快時尚，而是依據當代工作者的生活型態進行框型微調與迭代。
            <br /><br />

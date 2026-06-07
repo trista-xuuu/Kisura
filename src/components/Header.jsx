@@ -6,7 +6,7 @@ import allProducts from '../data/products.json';
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [openMobileMenus, setOpenMobileMenus] = useState({ products: false, stories: false });
+  const [openMobileMenus, setOpenMobileMenus] = useState({ explore: false, products: false, stories: false });
   const location = useLocation();
 
   const toggleMobileMenu = (menu) => setOpenMobileMenus(prev => ({ ...prev, [menu]: !prev[menu] }));
@@ -22,11 +22,11 @@ const Header = () => {
   // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
-    setOpenMobileMenus({ products: false, stories: false });
+    setOpenMobileMenus({ explore: false, products: false, stories: false });
   }, [location.pathname, location.search]);
 
   const headerStyle = {
-    position: 'sticky',
+    position: 'fixed',
     top: 0,
     left: 0,
     width: '100%',
@@ -50,6 +50,20 @@ const Header = () => {
           <div className="hide-mobile" style={{ flex: 1, display: 'flex', gap: '32px', alignItems: 'center' }}>
             <Link to="/story" className="tc-body" style={{ color: 'var(--color-g100)' }}>品牌故事</Link>
             <div className="nav-dropdown-wrapper">
+               <Link to="/explore" className="tc-body" style={{ color: 'var(--color-g100)', display: 'flex', alignItems: 'center' }}>
+                 探索產品
+                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '6px' }}>
+                   <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                 </svg>
+               </Link>
+               <div className="nav-dropdown">
+                  <Link to="/explore?gender=all">所有框型</Link>
+                  <Link to="/explore?gender=men">男士框</Link>
+                  <Link to="/explore?gender=women">女士框</Link>
+                  <Link to="/explore?gender=unisex">中性框</Link>
+               </div>
+            </div>
+            <div className="nav-dropdown-wrapper">
                <Link to="/products" className="tc-body" style={{ color: 'var(--color-g100)', display: 'flex', alignItems: 'center' }}>
                  探索系列
                  <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '6px' }}>
@@ -57,7 +71,6 @@ const Header = () => {
                  </svg>
                </Link>
                <div className="nav-dropdown">
-                  <Link to="/products?category=ALL">所有系列</Link>
                   {categories.map(cat => (
                      <Link key={cat} to={`/products?category=${cat}`}>{cat}</Link>
                   ))}
@@ -114,42 +127,54 @@ const Header = () => {
           overflowY: 'auto', padding: '40px var(--padding-x)'
         }}
       >
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-          <Link to="/story" className="tc-h4" style={{ color: 'var(--color-g100)' }}>品牌故事</Link>
-          <div style={{ borderTop: '1px solid var(--color-g20)', paddingTop: '24px' }}>
-            <div onClick={() => toggleMobileMenu('products')} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', marginBottom: openMobileMenus.products ? '16px' : '0' }}>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <Link to="/story" className="tc-h4" onClick={() => setIsMobileMenuOpen(false)} style={{ color: 'var(--color-g100)', padding: '24px 0', borderBottom: '1px solid var(--color-g20)' }}>品牌故事</Link>
+          <div style={{ borderBottom: '1px solid var(--color-g20)' }}>
+            <div onClick={() => toggleMobileMenu('explore')} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', padding: '24px 0' }}>
+              <h3 className="tc-h4" style={{ color: 'var(--color-g100)', margin: 0 }}>探索產品</h3>
+              {openMobileMenus.explore ? <CaretUp size={20} color="var(--color-g100)" /> : <CaretDown size={20} color="var(--color-g100)" />}
+            </div>
+            {openMobileMenus.explore && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '0 16px 24px 16px' }}>
+                <Link to="/explore?gender=all" onClick={() => setIsMobileMenuOpen(false)} className="tc-body" style={{ color: 'var(--color-g80)' }}>所有框型</Link>
+                <Link to="/explore?gender=men" onClick={() => setIsMobileMenuOpen(false)} className="tc-body" style={{ color: 'var(--color-g80)' }}>男士框</Link>
+                <Link to="/explore?gender=women" onClick={() => setIsMobileMenuOpen(false)} className="tc-body" style={{ color: 'var(--color-g80)' }}>女士框</Link>
+                <Link to="/explore?gender=unisex" onClick={() => setIsMobileMenuOpen(false)} className="tc-body" style={{ color: 'var(--color-g80)' }}>中性框</Link>
+              </div>
+            )}
+          </div>
+          <div style={{ borderBottom: '1px solid var(--color-g20)' }}>
+            <div onClick={() => toggleMobileMenu('products')} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', padding: '24px 0' }}>
               <h3 className="tc-h4" style={{ color: 'var(--color-g100)', margin: 0 }}>探索系列</h3>
               {openMobileMenus.products ? <CaretUp size={20} color="var(--color-g100)" /> : <CaretDown size={20} color="var(--color-g100)" />}
             </div>
             {openMobileMenus.products && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', paddingLeft: '16px' }}>
-                <Link to="/products?category=ALL" className="tc-body" style={{ color: 'var(--color-g80)' }}>所有系列</Link>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '0 16px 24px 16px' }}>
                 {categories.map(cat => (
-                   <Link key={cat} to={`/products?category=${cat}`} className="tc-body" style={{ color: 'var(--color-g80)' }}>{cat}</Link>
+                   <Link key={cat} to={`/products?category=${cat}`} onClick={() => setIsMobileMenuOpen(false)} className="tc-body" style={{ color: 'var(--color-g80)' }}>{cat}</Link>
                 ))}
               </div>
             )}
           </div>
-          <div style={{ borderTop: '1px solid var(--color-g20)', paddingTop: '24px' }}>
-            <div onClick={() => toggleMobileMenu('stories')} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', marginBottom: openMobileMenus.stories ? '16px' : '0' }}>
+          <div style={{ borderBottom: '1px solid var(--color-g20)' }}>
+            <div onClick={() => toggleMobileMenu('stories')} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', padding: '24px 0' }}>
               <h3 className="tc-h4" style={{ color: 'var(--color-g100)', margin: 0 }}>探索故事</h3>
               {openMobileMenus.stories ? <CaretUp size={20} color="var(--color-g100)" /> : <CaretDown size={20} color="var(--color-g100)" />}
             </div>
             {openMobileMenus.stories && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', paddingLeft: '16px' }}>
-                <Link to="/stories?category=職人故事" className="tc-body" style={{ color: 'var(--color-g80)' }}>職人故事</Link>
-                <Link to="/stories?category=眼鏡知識" className="tc-body" style={{ color: 'var(--color-g80)' }}>眼鏡知識</Link>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '0 16px 24px 16px' }}>
+                <Link to="/stories?category=職人故事" onClick={() => setIsMobileMenuOpen(false)} className="tc-body" style={{ color: 'var(--color-g80)' }}>職人故事</Link>
+                <Link to="/stories?category=眼鏡知識" onClick={() => setIsMobileMenuOpen(false)} className="tc-body" style={{ color: 'var(--color-g80)' }}>眼鏡知識</Link>
               </div>
             )}
           </div>
-          <Link to="/stores" className="tc-h4" style={{ color: 'var(--color-g100)', borderTop: '1px solid var(--color-g20)', paddingTop: '24px', display: 'flex', alignItems: 'center', gap: '8px' }}><MapPin size={24} /> 合作通路</Link>
-          <div style={{ borderTop: '1px solid var(--color-g20)', paddingTop: '24px' }}>
-            <Link to="/recommend" className="tc-h4" style={{ color: 'var(--color-g100)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Sparkle size={24} /> AI 推薦
-            </Link>
-          </div>
+          <Link to="/stores" onClick={() => setIsMobileMenuOpen(false)} className="tc-h4" style={{ color: 'var(--color-g100)', borderBottom: '1px solid var(--color-g20)', padding: '24px 0', display: 'flex', alignItems: 'center', gap: '8px' }}><MapPin size={24} /> 合作通路</Link>
+          <Link to="/recommend" onClick={() => setIsMobileMenuOpen(false)} className="tc-h4" style={{ color: 'var(--color-g100)', padding: '24px 0', borderBottom: '1px solid transparent', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Sparkle size={24} /> AI 推薦
+          </Link>
         </div>
       </div>
+      <div style={{ height: '70px', width: '100%' }} />
     </>
   );
 };

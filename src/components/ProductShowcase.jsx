@@ -27,7 +27,7 @@ const ProductShowcase = () => {
     <section id="products" style={{ backgroundColor: 'var(--color-secondary-cream)', padding: '120px 0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-          <h2 className="tc-h2" style={{ color: 'var(--color-g100)', marginBottom: '16px' }}>純鈦系列</h2>
+          <h2 className="tc-h2" style={{ color: 'var(--color-g100)', marginBottom: '20px' }}>純鈦系列</h2>
           <p className="tc-body" style={{ color: 'var(--color-g80)' }}>所有產品均採用 100% 純鈦，非合金，材質純度可驗證。</p>
         </div>
         

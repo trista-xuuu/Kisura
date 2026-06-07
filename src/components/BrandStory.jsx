@@ -7,10 +7,10 @@ const BrandStory = () => {
         <h2 className="en-h2" style={{ color: 'var(--color-accent-earth)', marginBottom: '16px' }}>Heart of Titanium</h2>
         <h3 className="en-h5" style={{ color: 'var(--color-g60)', marginBottom: '64px', letterSpacing: '4px' }}>PURE. PRECISE. PERMANENT.</h3>
         
-        <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '32px', textAlign: 'left' }}>
+        <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '28px', textAlign: 'left' }}>
           1996 年，當台灣充斥著厚重的合金鏡框時，KISURA 便投入了當時工藝門檻極高的「純鈦」領域。三十年來，我們沒有喧嘩的廣告，卻成為許多眼鏡行與驗光師的推薦首選。
         </p>
-        <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '32px', textAlign: 'left' }}>
+        <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '28px', textAlign: 'left' }}>
           在事業裡衝刺的你，每天睜開眼，就是超過 10 小時的無聲戰役。當你專注眼前的同時，也應該讓你的臉部壓力獲得解放。
         </p>
         <p className="tc-body" style={{ color: 'var(--color-g80)', textAlign: 'left' }}>

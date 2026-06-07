@@ -31,18 +31,17 @@ const Footer = () => {
           </div>
 
           {/* Column 2: Shop */}
-          <div style={{ minWidth: '120px', marginBottom: '60px' }}>
+          <div className="hide-mobile" style={{ minWidth: '120px', marginBottom: '60px' }}>
             <h4 className="en-caption" style={{ margin: '0 0 24px 0', color: 'var(--color-g100)' }}>SHOP</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <li><Link to="/products?category=ALL" className="tc-body" style={{ color: 'var(--color-g80)' }}>所有系列</Link></li>
-              {categories.map(cat => (
-                <li key={cat}><Link to={`/products?category=${cat}`} className="tc-body" style={{ color: 'var(--color-g80)' }}>{cat}</Link></li>
-              ))}
+              <li><Link to="/explore" className="tc-body" style={{ color: 'var(--color-g80)' }}>探索產品</Link></li>
+              <li><Link to="/explore?gender=men" className="tc-body" style={{ color: 'var(--color-g80)' }}>男士框</Link></li>
+              <li><Link to="/explore?gender=women" className="tc-body" style={{ color: 'var(--color-g80)' }}>女士框</Link></li>
             </ul>
           </div>
 
           {/* Column 3: Explore */}
-          <div style={{ minWidth: '120px', marginBottom: '60px' }}>
+          <div className="hide-mobile" style={{ minWidth: '120px', marginBottom: '60px' }}>
             <h4 className="en-caption" style={{ margin: '0 0 24px 0', color: 'var(--color-g100)' }}>EXPLORE</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <li><Link to="/products" className="tc-body" style={{ color: 'var(--color-g80)' }}>探索系列</Link></li>
@@ -53,7 +52,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom */}
-        <div className="flex-col-mobile text-center-mobile" style={{ 
+        <div className="flex-col-mobile align-start-mobile" style={{ 
           borderTop: '1px solid var(--color-g30)', 
           paddingTop: '28px', 
           display: 'flex', 

@@ -11,7 +11,7 @@ const Craftsmanship = () => {
         gap: '80px' 
       }}>
         <div style={{ flex: '1 1 400px' }}>
-          <h2 className="tc-h2" style={{ color: 'var(--color-g100)', marginBottom: '32px' }}>職人共感，純粹的專注</h2>
+          <h2 className="tc-h2" style={{ color: 'var(--color-g100)', marginBottom: '20px' }}>職人共感，純粹的專注</h2>
           <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '24px' }}>
             在錯落的幾何模型與透視圖紙之間，靜靜構築著空間的秩序。光影沿著筆下的線條遊走，展現出結構與生活美學的精準平衡。
           </p>
