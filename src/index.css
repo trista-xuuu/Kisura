@@ -15,7 +15,6 @@
 
 .store-filters-col {
   display: flex;
-  flex-direction: column;
   gap: 8px;
   flex: 1 1 auto;
 }
@@ -712,6 +711,10 @@ input[type="range"].custom-slider::-moz-range-thumb {
 }
 .mobile-filter-panel .nearby-btn-wrapper button {
   width: 100% !important;
+}
+
+.mobile-filter-panel .store-filters-col {
+  flex-direction: column;
 }
 
 @media (max-width: 768px) {
