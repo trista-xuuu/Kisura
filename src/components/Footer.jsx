@@ -18,7 +18,7 @@ const Footer = () => {
           <div style={{ marginRight: 'auto', minWidth: '200px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
             <img src="/logo/logo_1.svg" alt="KISURA" style={{ height: '45px', display: 'block', marginBottom: '36px' }} />
             <p className="tc-body" style={{ color: 'var(--color-g80)', marginBottom: '24px' }}>
-              堅持的信念，給與堅持的人，完成堅持的事。
+              堅持的信念，給予堅持的人，完成堅持的事。
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginTop: 'auto' }}>
               <a href="#" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-g80)' }} aria-label="Instagram">
@@ -34,9 +34,9 @@ const Footer = () => {
           <div className="hide-mobile" style={{ minWidth: '120px', marginBottom: '60px' }}>
             <h4 className="en-caption" style={{ margin: '0 0 24px 0', color: 'var(--color-g100)' }}>SHOP</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <li><Link to="/explore" className="tc-body" style={{ color: 'var(--color-g80)' }}>探索產品</Link></li>
               <li><Link to="/explore?gender=men" className="tc-body" style={{ color: 'var(--color-g80)' }}>男士框</Link></li>
               <li><Link to="/explore?gender=women" className="tc-body" style={{ color: 'var(--color-g80)' }}>女士框</Link></li>
+              <li><Link to="/explore?gender=unisex" className="tc-body" style={{ color: 'var(--color-g80)' }}>中性框</Link></li>
             </ul>
           </div>
 
@@ -44,6 +44,7 @@ const Footer = () => {
           <div className="hide-mobile" style={{ minWidth: '120px', marginBottom: '60px' }}>
             <h4 className="en-caption" style={{ margin: '0 0 24px 0', color: 'var(--color-g100)' }}>EXPLORE</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <li><Link to="/explore" className="tc-body" style={{ color: 'var(--color-g80)' }}>探索產品</Link></li>
               <li><Link to="/products" className="tc-body" style={{ color: 'var(--color-g80)' }}>探索系列</Link></li>
               <li><Link to="/stories" className="tc-body" style={{ color: 'var(--color-g80)' }}>探索故事</Link></li>
               <li><Link to="/stores" className="tc-body" style={{ color: 'var(--color-g80)' }}>合作通路</Link></li>

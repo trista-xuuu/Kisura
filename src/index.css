@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=Noto+Sans+TC:wght@300;400&family=Noto+Serif+TC:wght@400;500&family=IBM+Plex+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Noto+Sans+TC:wght@300;400&family=Noto+Serif+TC:wght@400;500&family=IBM+Plex+Mono&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=ranade@300,400&display=swap');
 
 .nowrap-desktop {
@@ -89,7 +89,7 @@ html {
 /* Typography Utility Classes */
 .tc-h1 {
   font-family: var(--font-tc-primary);
-  font-weight: 300;
+  font-weight: 500;
   font-size: clamp(28px, 3.8vw, 48px);
   line-height: 1.3;
   margin: 0;
@@ -97,7 +97,7 @@ html {
 
 .tc-h2 {
   font-family: var(--font-tc-primary);
-  font-weight: 300;
+  font-weight: 500;
   font-size: clamp(24px, 3vw, 36px);
   line-height: 1.4;
   margin: 0;
@@ -105,7 +105,7 @@ html {
 
 .tc-h3 {
   font-family: var(--font-tc-primary);
-  font-weight: 300;
+  font-weight: 500;
   font-size: clamp(20px, 2.8vw, 32px);
   line-height: 1.4;
   margin: 0;
@@ -113,7 +113,7 @@ html {
 
 .tc-h4 {
   font-family: var(--font-tc-primary);
-  font-weight: 300;
+  font-weight: 500;
   font-size: clamp(18px, 2.2vw, 24px);
   line-height: 1.5;
   margin: 0;
@@ -121,7 +121,7 @@ html {
 
 .tc-h5 {
   font-family: var(--font-tc-primary);
-  font-weight: 300;
+  font-weight: 500;
   font-size: 20px;
   line-height: 1.5;
   margin: 0;
@@ -153,7 +153,7 @@ html {
 
 .en-h1 {
   font-family: var(--font-en-primary);
-  font-weight: 300;
+  font-weight: 500;
   font-size: clamp(28px, 3.8vw, 48px);
   line-height: 1.1;
   margin: 0;
@@ -161,7 +161,7 @@ html {
 
 .en-h2 {
   font-family: var(--font-en-primary);
-  font-weight: 300;
+  font-weight: 500;
   font-size: clamp(24px, 3vw, 36px);
   line-height: 1.2;
   margin: 0;
@@ -169,7 +169,7 @@ html {
 
 .en-h3 {
   font-family: var(--font-en-primary);
-  font-weight: 300;
+  font-weight: 500;
   font-size: clamp(20px, 2.8vw, 32px);
   line-height: 1.4;
   letter-spacing: 0.1em;
@@ -178,7 +178,7 @@ html {
 
 .en-h4 {
   font-family: var(--font-en-primary);
-  font-weight: 300;
+  font-weight: 500;
   font-size: clamp(18px, 2.2vw, 24px);
   line-height: 1.4;
   letter-spacing: 0.1em;
@@ -187,7 +187,7 @@ html {
 
 .en-h5 {
   font-family: var(--font-en-primary);
-  font-weight: 300;
+  font-weight: 500;
   font-size: clamp(16px, 1.8vw, 20px);
   line-height: 1.5;
   letter-spacing: 0.1em;
