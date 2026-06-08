@@ -40,7 +40,7 @@ const StoryList = () => {
       </div>
 
       {/* Filter Tabs */}
-      <div className="gap-mobile-16 category-bar" style={{ display: 'flex', justifyContent: 'center', gap: '40px', padding: '40px 0', borderBottom: '1px solid var(--color-g20)', flexWrap: 'wrap', backgroundColor: 'var(--color-primary-white)', marginBottom: '16px' }}>
+      <div className="gap-mobile-16 category-bar" style={{ display: 'flex', justifyContent: 'center', gap: '40px', padding: '24px 0', borderBottom: '1px solid var(--color-g20)', flexWrap: 'wrap', backgroundColor: 'var(--color-primary-white)', marginBottom: '16px' }}>
         {tabs.map(tab => (
           <button 
             key={tab}

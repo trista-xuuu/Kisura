@@ -27,7 +27,7 @@ const ProductDetail = () => {
   const [modelsLoaded, setModelsLoaded] = useState(false);
   const [isDetecting, setIsDetecting] = useState(false);
   const [alignStatus, setAlignStatus] = useState('detecting');
-  const [gScale, setGScale] = useState(1);
+  const [gScale, setGScale] = useState(0.35);
   const [gX, setGX] = useState(50); // X position %
   const [gY, setGY] = useState(40); // Y position %
   const [gRotation, setGRotation] = useState(0); // Rotation in degrees
@@ -177,7 +177,7 @@ const ProductDetail = () => {
         img.src = dataUrl;
         img.onload = async () => {
           try {
-            const detection = await faceapi.detectSingleFace(img, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks(true);
+            const detection = await faceapi.detectSingleFace(img, new faceapi.TinyFaceDetectorOptions({ scoreThreshold: 0.4 })).withFaceLandmarks(true);
             setIsDetecting(false);
             if (detection) {
               const leftEye = detection.landmarks.getLeftEye();
@@ -216,11 +216,22 @@ const ProductDetail = () => {
               setGY(yPercent);
               setGScale(newScale);
               setGRotation(angle);
+            } else {
+              alert('無法成功辨識臉部特徵，請確保正面面對鏡頭、無遮擋物，並在光線充足處拍攝。');
+              setUserPhoto(null);
+              openCamera();
             }
           } catch (e) {
             setIsDetecting(false);
+            alert('辨識過程發生錯誤，請重新嘗試。');
+            setUserPhoto(null);
+            openCamera();
           }
         };
+      } else {
+        alert('AI模型正在載入中，請稍候幾秒再試！');
+        setUserPhoto(null);
+        openCamera();
       }
     }
   };
@@ -282,19 +293,19 @@ const ProductDetail = () => {
 
           // 3. Draw Typography (Aesthetics)
           // Top text
-          ctx.font = '300 36px "Ranade", sans-serif';
+          ctx.font = '300 36px "Jost", sans-serif';
           ctx.fillStyle = '#8C7D64'; // accent-earth
           ctx.textAlign = 'center';
           ctx.letterSpacing = '8px'; // standard canvas api doesn't support letterSpacing directly in all browsers, but we can simulate or ignore.
           ctx.fillText('V I R T U A L   T R Y - O N', canvas.width / 2, 140);
           
           // Bottom text (Product Info)
-          ctx.font = '400 48px "Noto Serif TC", serif';
+          ctx.font = '500 48px "Jost", "Noto Serif TC", serif';
           ctx.fillStyle = '#343230';
           ctx.textAlign = 'left';
           ctx.fillText(`${product.name}`, dx, dy + dSize + 120);
           
-          ctx.font = '300 36px "Noto Sans TC", sans-serif';
+          ctx.font = '300 36px "Jost", "Noto Sans TC", sans-serif';
           ctx.fillStyle = '#8C8980'; // g70
           ctx.fillText(`${activeColor.name}`, dx, dy + dSize + 180);
 
@@ -312,7 +323,7 @@ const ProductDetail = () => {
           };
           logoImg.onerror = () => {
              // Fallback text if logo fails
-             ctx.font = '300 48px "Ranade", sans-serif';
+             ctx.font = '300 48px "Jost", sans-serif';
              ctx.fillStyle = '#343230';
              ctx.textAlign = 'right';
              ctx.fillText('KISURA', canvas.width - dx, dy + dSize + 150);
@@ -327,8 +338,8 @@ const ProductDetail = () => {
     const canvas = await generatePolaroidCanvas();
     if (!canvas) return;
     const link = document.createElement('a');
-    link.download = `kisura_${product.name}_tryon.webp`;
-    link.href = canvas.toDataURL('image/png');
+    link.download = `kisura_${product.name}_tryon.jpg`;
+    link.href = canvas.toDataURL('image/jpeg', 0.9);
     link.click();
   };
 
@@ -341,7 +352,7 @@ const ProductDetail = () => {
     
     if (isMobile && navigator.share) {
       canvas.toBlob(async (blob) => {
-         const file = new File([blob], `kisura_${product.name}_tryon.webp`, { type: 'image/png' });
+         const file = new File([blob], `kisura_${product.name}_tryon.jpg`, { type: 'image/jpeg' });
          try {
            await navigator.share({
              title: 'KISURA 線上試戴',
@@ -351,13 +362,13 @@ const ProductDetail = () => {
          } catch (err) {
            console.log('Share canceled or failed', err);
          }
-      }, 'image/png');
+      }, 'image/jpeg', 0.9);
     } else {
       // Desktop or unsupported fallback -> download & prompt
       alert(`電腦版瀏覽器不支援直接發布到社群。已為您下載試戴美照！快傳送到手機分享吧 ✨`);
       const link = document.createElement('a');
-      link.download = `kisura_${product.name}_tryon.webp`;
-      link.href = canvas.toDataURL('image/png');
+      link.download = `kisura_${product.name}_tryon.jpg`;
+      link.href = canvas.toDataURL('image/jpeg', 0.9);
       link.click();
     }
   };
