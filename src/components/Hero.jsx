@@ -14,7 +14,7 @@ const Hero = () => {
       <div style={{
         position: 'absolute',
         top: 0, left: 0, right: 0, bottom: 0,
-        backgroundImage: 'url(/model/Gemini_Generated_Image_3fqmay3fqmay3fqm.png)',
+        backgroundImage: 'url(/model/Gemini_Generated_Image_3fqmay3fqmay3fqm.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center 20%',
         opacity: 0.6

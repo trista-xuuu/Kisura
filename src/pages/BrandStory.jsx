@@ -5,7 +5,7 @@ const BrandStory = () => {
     <div style={{ backgroundColor: 'var(--color-primary-white)', paddingBottom: 'var(--spacing-section-y)' }}>
       
       {/* Full Width Hero */}
-      <div style={{ width: '100%', height: 'calc(100dvh - 70px)', backgroundImage: 'url(/brand_story/brand_1.png)', backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }}>
+      <div style={{ width: '100%', height: 'calc(100dvh - 70px)', backgroundImage: 'url(/brand_story/brand_1.webp)', backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }}>
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.15)' }}></div>
         <div style={{ position: 'relative', zIndex: 2, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', color: '#FFFFFF', textAlign: 'center' }}>
            <p className="en-caption fade-in-up" style={{ color: '#FFFFFF', marginBottom: '16px', letterSpacing: '0.2em' }}>BRAND STORY</p>

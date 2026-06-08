@@ -29,12 +29,12 @@ const Home = () => {
               <Link to="/story" className="btn-outline">探索品牌故事</Link>
             </div>
          </div>
-         <div className="proportional-img-mobile" style={{ height: 'calc(100vh - 74px)', minHeight: '400px', backgroundImage: 'url(/index/index_13.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+         <div className="proportional-img-mobile" style={{ height: 'calc(100vh - 74px)', minHeight: '400px', backgroundImage: 'url(/index/index_13.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
       </div>
 
       {/* Split Block: AI Recommendation (Left Image, Right Text) */}
       <div className="grid-2 grid-reverse-mobile">
-         <div className="proportional-img-mobile" style={{ height: 'calc(100vh - 74px)', minHeight: '400px', backgroundImage: 'url(/index_9.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+         <div className="proportional-img-mobile" style={{ height: 'calc(100vh - 74px)', minHeight: '400px', backgroundImage: 'url(/index_9.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
          <div className="text-block-padding" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <p className="en-caption" style={{ color: 'var(--color-g80)', marginBottom: '16px' }}>AI RECOMMENDATION</p>
             <h2 className="tc-h2" style={{ color: 'var(--color-g100)', marginBottom: '20px' }}>不知道哪副眼鏡最適合我？</h2>
@@ -127,7 +127,7 @@ const Home = () => {
 
       {/* Full Width Image Banner for Stores */}
       <div style={{ position: 'relative', height: '80vh', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundImage: 'url(/context/Context_4.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundImage: 'url(/context/Context_4.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.15)' }}></div>
          <div style={{ position: 'relative', zIndex: 1, padding: '80px 60px', textAlign: 'center', maxWidth: '600px' }}>
             <h2 className="tc-h2" style={{ color: '#FFFFFF', marginBottom: '20px' }}>找到最近的商店</h2>
