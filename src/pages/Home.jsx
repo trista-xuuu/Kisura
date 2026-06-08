@@ -87,11 +87,11 @@ const Home = () => {
            {Array.from(new Set(allProducts.map(p => p.cat))).map(catName => {
              let img = '';
              if (catName === '經典系列') {
-               img = '/index/index_7.png';
+               img = '/index/index_7.webp';
              } else if (catName === '羽毛鈦系列') {
-               img = '/index/index_5.png';
+               img = '/index/index_5.webp';
              } else if (catName === '工藝系列') {
-               img = '/index/index_4.png';
+               img = '/index/index_4.webp';
              } else {
                const prod = allProducts.find(p => p.cat === catName);
                img = prod ? prod.colors[0].img : '';

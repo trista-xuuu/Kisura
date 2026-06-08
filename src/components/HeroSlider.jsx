@@ -9,19 +9,19 @@ import 'swiper/css/pagination';
 const HeroSlider = () => {
   const slides = [
     {
-      image: '/index/index_14.png',
+      image: '/index/index_14.webp',
       title: '心無旁騖，只做自己',
       subtitle: 'NOTHING IN THE WAY',
       link: '/explore'
     },
     {
-      image: '/index/index_2.png',
+      image: '/index/index_2.webp',
       title: '極致輕盈，專注當下',
       subtitle: 'PURE AND PRECISE',
       link: '/explore'
     },
     {
-      image: '/index/index_1.png',
+      image: '/index/index_1.webp',
       title: '頂級純鈦的體感',
       subtitle: 'CRAFTED WITH INTENT',
       link: '/explore'

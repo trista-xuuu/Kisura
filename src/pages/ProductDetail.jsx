@@ -327,7 +327,7 @@ const ProductDetail = () => {
     const canvas = await generatePolaroidCanvas();
     if (!canvas) return;
     const link = document.createElement('a');
-    link.download = `kisura_${product.name}_tryon.png`;
+    link.download = `kisura_${product.name}_tryon.webp`;
     link.href = canvas.toDataURL('image/png');
     link.click();
   };
@@ -341,7 +341,7 @@ const ProductDetail = () => {
     
     if (isMobile && navigator.share) {
       canvas.toBlob(async (blob) => {
-         const file = new File([blob], `kisura_${product.name}_tryon.png`, { type: 'image/png' });
+         const file = new File([blob], `kisura_${product.name}_tryon.webp`, { type: 'image/png' });
          try {
            await navigator.share({
              title: 'KISURA 線上試戴',
@@ -356,7 +356,7 @@ const ProductDetail = () => {
       // Desktop or unsupported fallback -> download & prompt
       alert(`電腦版瀏覽器不支援直接發布到社群。已為您下載試戴美照！快傳送到手機分享吧 ✨`);
       const link = document.createElement('a');
-      link.download = `kisura_${product.name}_tryon.png`;
+      link.download = `kisura_${product.name}_tryon.webp`;
       link.href = canvas.toDataURL('image/png');
       link.click();
     }

@@ -26,8 +26,8 @@ const BrandStory = () => {
 
       {/* Grid Images */}
       <div className="grid-1-mobile" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px', backgroundColor: 'var(--color-g20)', marginBottom: 'var(--spacing-section-y)' }}>
-         <img src="/brand_story/brand_3.png" className="h-auto-mobile" style={{ width: '100%', height: '60vh', objectFit: 'cover' }} />
-         <img src="/brand_story/brand_2.png" className="h-auto-mobile" style={{ width: '100%', height: '60vh', objectFit: 'cover' }} />
+         <img src="/brand_story/brand_3.webp" className="h-auto-mobile" style={{ width: '100%', height: '60vh', objectFit: 'cover' }} />
+         <img src="/brand_story/brand_2.webp" className="h-auto-mobile" style={{ width: '100%', height: '60vh', objectFit: 'cover' }} />
       </div>
 
       <div className="container" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>

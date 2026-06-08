@@ -29,7 +29,7 @@ const Craftsmanship = () => {
             backgroundColor: 'var(--color-secondary-cream)', 
             zIndex: -1 
           }}></div>
-          <img src="/context/Gemini_Generated_Image_a66b23a66b23a66b.png" alt="職人意象" style={{ width: '100%', display: 'block', boxShadow: '0 10px 40px rgba(0,0,0,0.05)' }} />
+          <img src="/context/Gemini_Generated_Image_a66b23a66b23a66b.webp" alt="職人意象" style={{ width: '100%', display: 'block', boxShadow: '0 10px 40px rgba(0,0,0,0.05)' }} />
         </div>
       </div>
     </section>

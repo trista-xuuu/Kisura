@@ -27,7 +27,7 @@ const ProductList = () => {
         layout: 'left-image',
         title: '雋永設計，傳承經典',
         desc: '以簡約線條與溫潤色澤，展現不盲從潮流的自信品味。每一處細節都經過精心打磨，呈現歲月洗禮後的沈穩與優雅。',
-        img: '/banner/crafts_2.png'
+        img: '/banner/crafts_2.webp'
       }
     ],
     '羽毛鈦系列': [
@@ -36,7 +36,7 @@ const ProductList = () => {
         layout: 'left-image',
         title: '近乎無形的輕盈',
         desc: '採用航太級純鈦金屬打造，大幅減輕鼻樑與耳朵的負擔。配戴一整天也感覺不到重量，讓每一次凝視都成為極致的享受。',
-        img: '/banner/feather_2.png'
+        img: '/banner/feather_2.webp'
       }
     ],
     '工藝系列': [
@@ -45,15 +45,15 @@ const ProductList = () => {
         layout: 'left-image',
         title: '精密製程，雕琢俐落細節',
         desc: '工藝系列結合高精度加工與先進雷射切割技術，突破傳統材質極限。以科學化的嚴謹態度處理每一個結構，演繹出現代科技與美學完美交融的絕佳質感。',
-        img: '/banner/classic_2.png'
+        img: '/banner/classic_2.webp'
       }
     ]
   };
 
   const collectionBanners = {
-    '經典系列': '/banner/crafts_1.png',
-    '羽毛鈦系列': '/banner/feather_4.png',
-    '工藝系列': '/banner/classic_1.png'
+    '經典系列': '/banner/crafts_1.webp',
+    '羽毛鈦系列': '/banner/feather_4.webp',
+    '工藝系列': '/banner/classic_1.webp'
   };
 
   const filteredProducts = allProducts.filter(p => p.cat === activeTab);
