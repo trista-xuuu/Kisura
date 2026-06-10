@@ -10,18 +10,21 @@ const HeroSlider = () => {
   const slides = [
     {
       image: '/index/index_14.webp',
+      mobileImage: '/index/Context_20_phone.webp',
       title: '心無旁騖，只做自己',
       subtitle: 'NOTHING IN THE WAY',
       link: '/explore'
     },
     {
       image: '/index/index_2.webp',
+      mobileImage: '/index/Context_19_phone.webp',
       title: '極致輕盈，專注當下',
       subtitle: 'PURE AND PRECISE',
       link: '/explore'
     },
     {
       image: '/index/index_1.webp',
+      mobileImage: '/index/Context_18_phone.webp',
       title: '頂級純鈦的體感',
       subtitle: 'CRAFTED WITH INTENT',
       link: '/explore'
@@ -43,18 +46,20 @@ const HeroSlider = () => {
           <SwiperSlide key={idx} style={{ position: 'relative', overflow: 'hidden' }}>
             <div style={{ position: 'relative', width: '100%', height: '100%' }}>
               {/* 完整圖片不變淡 */}
-              <img 
-                src={slide.image} 
-                alt={slide.title} 
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
+              <picture style={{ width: '100%', height: '100%', display: 'block' }}>
+                <source media="(max-width: 768px)" srcSet={slide.mobileImage} />
+                <img 
+                  src={slide.image} 
+                  alt={slide.title} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </picture>
               {/* 15% 黑色遮罩 */}
               <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.15)' }}></div>
               
               <div style={{ 
                 position: 'absolute', 
-                top: '50%',
-                transform: 'translateY(-50%)',
+                bottom: '80px',
                 left: 'var(--padding-x)', 
                 color: '#FFFFFF'
               }}>

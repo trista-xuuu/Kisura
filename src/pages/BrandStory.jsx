@@ -5,8 +5,12 @@ const BrandStory = () => {
     <div style={{ backgroundColor: 'var(--color-primary-white)', paddingBottom: 'var(--spacing-section-y)' }}>
       
       {/* Full Width Hero */}
-      <div style={{ width: '100%', height: 'calc(100dvh - 70px)', backgroundImage: 'url(/brand_story/brand_1.webp)', backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }}>
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.15)' }}></div>
+      <div style={{ width: '100%', height: 'calc(100dvh - 70px)', position: 'relative' }}>
+        <picture style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'block', zIndex: 0 }}>
+          <source media="(max-width: 768px)" srcSet="/brand_story/Context_21_phone.webp" />
+          <img src="/brand_story/brand_1.webp" alt="Brand Story" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        </picture>
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.15)', zIndex: 1 }}></div>
         <div style={{ position: 'relative', zIndex: 2, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', color: '#FFFFFF', textAlign: 'center' }}>
            <p className="en-caption fade-in-up" style={{ color: '#FFFFFF', marginBottom: '16px', letterSpacing: '0.2em' }}>BRAND STORY</p>
            <h1 className="tc-h1 fade-in-up" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>心無旁騖，只做自己</h1>

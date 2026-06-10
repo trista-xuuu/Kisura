@@ -56,6 +56,12 @@ const ProductList = () => {
     '工藝系列': '/banner/classic_1.webp'
   };
 
+  const collectionMobileBanners = {
+    '經典系列': '/banner/crafts_1_phone.webp',
+    '羽毛鈦系列': '/banner/feather_4_phone.webp',
+    '工藝系列': '/banner/classic_1_phone.webp'
+  };
+
   const filteredProducts = allProducts.filter(p => p.cat === activeTab);
 
   return (
@@ -65,12 +71,13 @@ const ProductList = () => {
       <div style={{ 
         width: '100%', 
         height: 'calc(100dvh - 70px)', 
-        backgroundImage: `url(${collectionBanners[activeTab] || collectionBanners['經典系列']})`, 
-        backgroundSize: 'cover', 
-        backgroundPosition: 'center', 
         position: 'relative'
       }}>
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.15)' }}></div>
+        <picture style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'block', zIndex: 0 }}>
+          <source media="(max-width: 768px)" srcSet={collectionMobileBanners[activeTab] || collectionMobileBanners['經典系列']} />
+          <img src={collectionBanners[activeTab] || collectionBanners['經典系列']} alt={activeTab ? `探索${activeTab}` : '探索系列'} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        </picture>
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.15)', zIndex: 1 }}></div>
         <div style={{ position: 'relative', zIndex: 2, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', color: '#FFFFFF', textAlign: 'center' }}>
            <p className="en-caption fade-in-up" style={{ color: '#FFFFFF', marginBottom: '16px', letterSpacing: '0.2em' }}>COLLECTIONS</p>
            <h1 className="tc-h1 fade-in-up" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>{activeTab ? `探索${activeTab}` : '探索系列'}</h1>
