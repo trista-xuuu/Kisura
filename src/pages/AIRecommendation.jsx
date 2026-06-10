@@ -19,11 +19,14 @@ const AIRecommendation = () => {
   const animationRef = useRef(null);
 
   useEffect(() => {
-    if (isCameraOpen && !modelsLoaded) {
+    if (!modelsLoaded) {
       const loadModels = async () => {
         try {
           const MODEL_URL = 'https://cdn.jsdelivr.net/npm/@vladmandic/face-api/model/';
-          await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
+          await Promise.all([
+            faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
+            faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL)
+          ]);
           setModelsLoaded(true);
         } catch (err) {
           console.error("Failed to load face-api models", err);
@@ -31,7 +34,7 @@ const AIRecommendation = () => {
       };
       loadModels();
     }
-  }, [isCameraOpen, modelsLoaded]);
+  }, [modelsLoaded]);
 
   useEffect(() => {
     if (isCameraOpen && modelsLoaded && videoRef.current) {
@@ -89,7 +92,7 @@ const AIRecommendation = () => {
       const reader = new FileReader();
       reader.onload = (e) => {
         setPhoto(e.target.result);
-        startSimulatedScan();
+        analyzePhoto(e.target.result);
       };
       reader.readAsDataURL(file);
     }
@@ -126,12 +129,15 @@ const AIRecommendation = () => {
       canvas.width = videoRef.current.videoWidth;
       canvas.height = videoRef.current.videoHeight;
       const ctx = canvas.getContext('2d');
+      // Mirror the canvas to match the screen
+      ctx.translate(canvas.width, 0);
+      ctx.scale(-1, 1);
       ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
       const dataUrl = canvas.toDataURL('image/png');
       
       closeCamera();
       setPhoto(dataUrl);
-      startSimulatedScan();
+      analyzePhoto(dataUrl);
     }
   };
 
@@ -144,22 +150,104 @@ const AIRecommendation = () => {
     };
   }, []);
 
-  const startSimulatedScan = () => {
+  const analyzePhoto = async (imageSrc) => {
     setIsScanning(true);
     setScanResult(null);
     
-    // Simulate API call for MediaPipe
-    setTimeout(() => {
-      setIsScanning(false);
-      // Randomly pick for demo, or you can allow manual override later
-      const randomFace = faceShapes[Math.floor(Math.random() * faceShapes.length)];
-      const randomSkin = skinTones[Math.floor(Math.random() * skinTones.length)];
+    try {
+      const img = new Image();
+      img.src = imageSrc;
+      await new Promise(r => img.onload = r);
       
-      setScanResult({
-        faceShape: randomFace,
-        skinTone: randomSkin
+      const detection = await faceapi.detectSingleFace(img, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks();
+      
+      if (!detection) {
+        alert("無法偵測到清晰的人臉，請重新上傳或拍攝正面清晰照。");
+        setIsScanning(false);
+        setPhoto(null);
+        return;
+      }
+      
+      const landmarks = detection.landmarks;
+      const positions = landmarks.positions;
+      
+      // Face Shape Analysis
+      const jawWidth = faceapi.euclideanDistance([positions[0].x, positions[0].y], [positions[16].x, positions[16].y]);
+      const faceHeight = faceapi.euclideanDistance([positions[8].x, positions[8].y], [positions[27].x, positions[27].y]) * 1.35; 
+      const lowerJawWidth = faceapi.euclideanDistance([positions[4].x, positions[4].y], [positions[12].x, positions[12].y]);
+      const foreheadWidth = faceapi.euclideanDistance([positions[1].x, positions[1].y], [positions[15].x, positions[15].y]);
+      
+      let detectedShape = '鵝蛋臉';
+      if (jawWidth > faceHeight * 0.9) {
+        if (lowerJawWidth > jawWidth * 0.85) {
+          detectedShape = '方臉';
+        } else {
+          detectedShape = '圓臉';
+        }
+      } else {
+        if (foreheadWidth > jawWidth * 0.95 && lowerJawWidth < jawWidth * 0.75) {
+          detectedShape = '心型臉';
+        } else {
+          detectedShape = '鵝蛋臉';
+        }
+      }
+
+      // Skin Tone Analysis
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
+      ctx.drawImage(img, 0, 0);
+      
+      const samplePoints = [positions[2], positions[3], positions[13], positions[14]];
+      let rTotal = 0, gTotal = 0, bTotal = 0, sampleCount = 0;
+      const boxSize = 10;
+      
+      samplePoints.forEach(p => {
+        const x = Math.floor(p.x - boxSize/2);
+        const y = Math.floor(p.y - boxSize/2);
+        if (x >= 0 && y >= 0 && x + boxSize < img.width && y + boxSize < img.height) {
+          const imgData = ctx.getImageData(x, y, boxSize, boxSize).data;
+          for (let i = 0; i < imgData.length; i += 4) {
+            rTotal += imgData[i];
+            gTotal += imgData[i+1];
+            bTotal += imgData[i+2];
+            sampleCount++;
+          }
+        }
       });
-    }, 2500);
+      
+      const avgR = rTotal / sampleCount || 255;
+      const avgG = gTotal / sampleCount || 255;
+      const avgB = bTotal / sampleCount || 255;
+      
+      let detectedSkin = '暖白皮';
+      const brightness = (avgR + avgG + avgB) / 3;
+      const r_g_diff = avgR - avgG;
+      
+      if (brightness < 130) {
+        detectedSkin = '小麥色';
+      } else if (r_g_diff > 45) {
+        detectedSkin = '冷白皮';
+      } else {
+        detectedSkin = '暖白皮';
+      }
+      
+      // Set a minimum time for the animation UX
+      setTimeout(() => {
+        setIsScanning(false);
+        setScanResult({
+          faceShape: detectedShape,
+          skinTone: detectedSkin
+        });
+      }, 1000);
+      
+    } catch (err) {
+      console.error(err);
+      alert("分析過程中發生錯誤。");
+      setIsScanning(false);
+      setPhoto(null);
+    }
   };
 
   // 推薦邏輯
